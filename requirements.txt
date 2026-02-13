@@ -1,9 +1,11 @@
-streamlit
-pandas
-selenium
-webdriver-manager
-transformers
-torch==2.2.2
-tqdm
-openpyxl
+selenium==4.22.0
+webdriver-manager==4.0.2
 
+pandas==2.2.2
+numpy<2
+
+transformers==4.41.2
+torch==2.3.1
+tqdm==4.66.4
+
+openpyxl==3.1.5
