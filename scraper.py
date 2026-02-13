@@ -2,31 +2,27 @@ import time
 import os
 from datetime import datetime
 import pandas as pd
-import torch
-from tqdm import tqdm
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 from transformers import pipeline
 
-
 # =====================================
-# CONFIGURATION
+# CONFIG
 # =====================================
 
-MIN_DATE_STR = "01-01-2026"   # change as needed
-MIN_DATE = datetime.strptime(MIN_DATE_STR, "%d-%m-%Y")
-
+MIN_DATE = datetime(2026, 1, 1)   # change or pass dynamically later
+MAX_PAGES = 7
 CONFIDENCE_THRESHOLD = 0.5
 
-MAX_PAGES = 7
-
+entries = []
 
 # =====================================
-# HEADLESS CHROME SETUP (GitHub Actions Compatible)
+# STEALTH CHROME SETUP
 # =====================================
 
 options = webdriver.ChromeOptions()
@@ -35,78 +31,92 @@ options.add_argument("--headless=new")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
+
 options.add_argument("--window-size=1920,1080")
 
+options.add_argument("--disable-blink-features=AutomationControlled")
+
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+options.add_experimental_option("useAutomationExtension", False)
+
 driver = webdriver.Chrome(options=options)
-wait = WebDriverWait(driver, 20)
 
+# hide webdriver flag
+driver.execute_script(
+    "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+)
 
-entries = []
-
+wait = WebDriverWait(driver, 30)
 
 # =====================================
 # OPEN MERX
 # =====================================
 
 print("Opening MERX...")
+
 driver.get("https://www.merx.com")
 
-time.sleep(3)
-
+wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+time.sleep(5)
 
 # =====================================
 # CLICK CANADIAN TENDERS
 # =====================================
 
-wait.until(EC.element_to_be_clickable((
+print("Opening Canadian Tenders...")
+
+canadian = wait.until(EC.presence_of_element_located((
     By.XPATH,
-    "/html/body/header/div[3]/div/ul/li[2]/div[2]/div/nav/div/div/div/nav/ul/li[1]/a"
-))).click()
+    "//a[contains(text(),'Canadian Tenders')]"
+)))
 
-time.sleep(3)
+driver.execute_script("arguments[0].click();", canadian)
 
+time.sleep(5)
 
 # =====================================
-# SEARCH FOR "health"
+# SEARCH HEALTH
 # =====================================
+
+print("Searching health...")
 
 search_box = wait.until(EC.presence_of_element_located((
     By.XPATH,
-    "/html/body/main/div[1]/div/form/div[1]/div/div[1]/div/input"
+    "//input[contains(@type,'text')]"
 )))
 
 search_box.clear()
 search_box.send_keys("health")
-search_box.submit()
+search_box.send_keys(Keys.ENTER)
 
-time.sleep(3)
-
+time.sleep(5)
 
 # =====================================
 # SELECT OPEN SOLICITATIONS
 # =====================================
 
-status_dropdown = Select(wait.until(EC.presence_of_element_located((
+print("Filtering Open Solicitations...")
+
+dropdown = wait.until(EC.presence_of_element_located((
     By.XPATH,
-    "/html/body/main/div[1]/div/form/div[1]/div/div[5]/select"
-))))
+    "//select"
+)))
 
-status_dropdown.select_by_visible_text("Open Solicitations")
+Select(dropdown).select_by_visible_text("Open Solicitations")
 
-time.sleep(3)
-
+time.sleep(5)
 
 # =====================================
 # SCRAPE PAGES
 # =====================================
 
-print("Scraping opportunities...")
+print("Scraping pages...")
 
 for page in range(1, MAX_PAGES + 1):
 
     print(f"Page {page}")
 
-    wait.until(EC.presence_of_element_located((
+    wait.until(EC.presence_of_all_elements_located((
         By.XPATH,
         "//a[contains(@class,'solicitation-link')]"
     )))
@@ -116,7 +126,7 @@ for page in range(1, MAX_PAGES + 1):
         "//a[contains(@class,'solicitation-link')]"
     )
 
-    print(f"Found {len(cards)} opportunities")
+    print("Found:", len(cards))
 
     for card in cards:
 
@@ -132,7 +142,6 @@ for page in range(1, MAX_PAGES + 1):
             if link.startswith("/"):
                 link = "https://www.merx.com" + link
 
-
             published = card.find_element(
                 By.XPATH,
                 ".//span[contains(@class,'publicationDate')]//span[@class='dateValue']"
@@ -143,13 +152,11 @@ for page in range(1, MAX_PAGES + 1):
             if post_date < MIN_DATE:
                 continue
 
-
-            # OPEN DETAILS PAGE
-
+            # OPEN DETAILS TAB
             driver.execute_script("window.open(arguments[0]);", link)
             driver.switch_to.window(driver.window_handles[1])
 
-            time.sleep(2)
+            time.sleep(3)
 
             try:
                 description = driver.find_element(
@@ -162,142 +169,112 @@ for page in range(1, MAX_PAGES + 1):
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
 
-
             entries.append({
-
                 "Title": title,
                 "Link": link,
                 "Published Date": published,
                 "Description": description
-
             })
 
-
-        except Exception as e:
+        except:
             continue
 
-
     # NEXT PAGE
-
     if page < MAX_PAGES:
 
         try:
 
-            next_button = driver.find_element(
+            next_button = wait.until(EC.presence_of_element_located((
                 By.XPATH,
-                "/html/body/main/div[1]/div/form/div[2]/div[2]/div/div[3]/a"
-            )
+                "//a[contains(@class,'next')]"
+            )))
 
             driver.execute_script(
                 "arguments[0].click();",
                 next_button
             )
 
-            time.sleep(3)
+            time.sleep(5)
 
         except:
+            print("No more pages")
             break
 
 
 driver.quit()
 
-print(f"Total scraped: {len(entries)}")
+print("Total scraped:", len(entries))
 
-
-if not entries:
-
-    print("No opportunities found.")
+if len(entries) == 0:
+    print("No data found")
     exit()
-
 
 # =====================================
 # CLASSIFICATION
 # =====================================
 
-print("Loading classification model...")
+print("Loading classifier...")
 
 classifier = pipeline(
-
     "zero-shot-classification",
-
-    model="valhalla/distilbart-mnli-12-3",
-
-    device=0 if torch.cuda.is_available() else -1
-
+    model="valhalla/distilbart-mnli-12-3"
 )
 
-
 candidate_labels = [
-
     "IT Services",
     "IT Solutions",
     "IT Product",
     "IT Consultancy",
     "AI-Based Opportunity",
-    "Hardware/Instrument Requirement"
-
+    "Hardware Requirement"
 ]
-
 
 df = pd.DataFrame(entries)
 
-df["Text"] = df["Title"].fillna("") + ". " + df["Description"].fillna("")
+df["Text"] = df["Title"] + ". " + df["Description"]
 
+predicted = []
+scores = []
 
 print("Classifying...")
 
-predicted_labels = []
-confidence_scores = []
+for text in df["Text"]:
 
-
-for text in tqdm(df["Text"]):
-
-    text = str(text)[:1000]
+    text = text[:1000]
 
     result = classifier(text, candidate_labels)
 
     label = result["labels"][0]
     score = result["scores"][0]
 
-    if label == "Hardware/Instrument Requirement":
-
-        predicted_labels.append("Not Eligible (Hardware)")
-
+    if label == "Hardware Requirement":
+        predicted.append("Not Eligible")
     else:
+        predicted.append(label)
 
-        predicted_labels.append(label)
+    scores.append(score)
 
-    confidence_scores.append(round(score, 3))
-
-
-df["Predicted_Category"] = predicted_labels
-df["Confidence"] = confidence_scores
-
+df["Category"] = predicted
+df["Confidence"] = scores
 
 # =====================================
-# FILTER FINAL OUTPUT
+# FILTER
 # =====================================
 
 df = df[
-
-    (df["Predicted_Category"] != "Not Eligible (Hardware)") &
-
+    (df["Category"] != "Not Eligible")
+    &
     (df["Confidence"] >= CONFIDENCE_THRESHOLD)
-
 ]
 
-
-print(f"Final opportunities retained: {len(df)}")
-
+print("Final count:", len(df))
 
 # =====================================
-# SAVE FILE
+# SAVE
 # =====================================
 
 filename = "MERX_Health_IT_Filtered.xlsx"
 
 df.to_excel(filename, index=False)
 
-
-print("Saved:", filename)
-print("Path:", os.path.abspath(filename))
+print("Saved:", os.path.abspath(filename))
