@@ -6,3 +6,4 @@ transformers
 torch==2.2.2
 tqdm
 openpyxl
+
