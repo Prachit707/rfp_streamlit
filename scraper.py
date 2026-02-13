@@ -3,25 +3,20 @@ import csv
 from datetime import datetime
 
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 
-# =========================
-# CONFIG
-# =========================
-
-OUTPUT_FILE = "rfp_results.csv"
-MERX_URL = "https://www.merx.com"
+OUTPUT_FILE = "merx_test_results.csv"
+MAX_PAGES = 7
 
 
-# =========================
-# DRIVER SETUP (GitHub Actions Safe)
-# =========================
+# ========================
+# SETUP DRIVER (GitHub Safe)
+# ========================
 
 def setup_driver():
 
@@ -42,103 +37,164 @@ def setup_driver():
     return driver
 
 
-# =========================
-# SAFE GET FUNCTION
-# =========================
-
-def safe_get(driver, url):
-
-    print(f"Opening {url}")
-
-    driver.get(url)
-
-    WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.TAG_NAME, "body"))
-    )
-
-    time.sleep(3)
-
-
-# =========================
-# SCRAPE MERX
-# =========================
-
-def scrape_merx(driver):
-
-    results = []
-
-    try:
-
-        safe_get(driver, MERX_URL)
-
-        print("Looking for opportunities...")
-
-        # wait for links to load
-        links = WebDriverWait(driver, 30).until(
-            EC.presence_of_all_elements_located((By.TAG_NAME, "a"))
-        )
-
-        for link in links:
-
-            text = link.text.strip()
-            href = link.get_attribute("href")
-
-            if text and href and "opportunity" in href.lower():
-
-                results.append({
-                    "title": text,
-                    "url": href,
-                    "source": "MERX",
-                    "date": datetime.now().strftime("%Y-%m-%d")
-                })
-
-    except Exception as e:
-
-        print("MERX scraping failed:", e)
-
-    return results
-
-
-# =========================
+# ========================
 # SAVE CSV
-# =========================
+# ========================
 
-def save_results(results):
+def save_csv(data):
 
-    if not results:
+    if not data:
         print("No results found")
         return
 
-    keys = results[0].keys()
+    keys = data[0].keys()
 
     with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
 
         writer = csv.DictWriter(f, keys)
         writer.writeheader()
-        writer.writerows(results)
+        writer.writerows(data)
 
-    print(f"Saved {len(results)} results")
+    print(f"Saved {len(data)} results to CSV")
 
 
-# =========================
+# ========================
+# SCRAPER
+# ========================
+
+def scrape_merx():
+
+    driver = setup_driver()
+    wait = WebDriverWait(driver, 30)
+
+    results = []
+
+    print("Opening MERX...")
+    driver.get("https://www.merx.com")
+
+    time.sleep(5)
+
+    print("Clicking Canadian Public Opportunities...")
+
+    canadian = wait.until(EC.element_to_be_clickable((
+        By.XPATH,
+        "//a[contains(text(),'Canadian Public Opportunities')]"
+    )))
+
+    canadian.click()
+
+    time.sleep(5)
+
+    print("Typing health in search...")
+
+    search_box = wait.until(EC.presence_of_element_located((
+        By.XPATH,
+        "//input[contains(@placeholder,'Search')]"
+    )))
+
+    search_box.clear()
+    search_box.send_keys("health")
+    search_box.send_keys(Keys.ENTER)
+
+    time.sleep(5)
+
+    print("Selecting Open Solicitations...")
+
+    status_dropdown = wait.until(EC.presence_of_element_located((
+        By.XPATH,
+        "//select"
+    )))
+
+    Select(status_dropdown).select_by_visible_text("Open Solicitations")
+
+    time.sleep(5)
+
+
+    # ========================
+    # PAGE LOOP
+    # ========================
+
+    for page in range(1, MAX_PAGES + 1):
+
+        print(f"Scanning Page {page}...")
+
+        wait.until(EC.presence_of_all_elements_located((
+            By.XPATH,
+            "//a[contains(@class,'solicitation-link')]"
+        )))
+
+        cards = driver.find_elements(
+            By.XPATH,
+            "//a[contains(@class,'solicitation-link')]"
+        )
+
+        print(f"Found {len(cards)} opportunities")
+
+        for card in cards:
+
+            try:
+
+                title = card.text.strip()
+
+                link = card.get_attribute("href")
+
+                try:
+                    date = card.find_element(
+                        By.XPATH,
+                        ".//span[contains(@class,'dateValue')]"
+                    ).text.strip()
+                except:
+                    date = "Unknown"
+
+                print(title, "|", date)
+
+                results.append({
+                    "Title": title,
+                    "Date": date,
+                    "Link": link
+                })
+
+            except Exception as e:
+
+                print("Error:", e)
+
+
+        # Next page
+        if page < MAX_PAGES:
+
+            try:
+
+                next_button = driver.find_element(
+                    By.XPATH,
+                    "//a[contains(@class,'next')]"
+                )
+
+                driver.execute_script(
+                    "arguments[0].click();",
+                    next_button
+                )
+
+                time.sleep(5)
+
+            except:
+
+                print("No more pages")
+                break
+
+
+    driver.quit()
+
+    return results
+
+
+# ========================
 # MAIN
-# =========================
+# ========================
 
 if __name__ == "__main__":
 
-    driver = setup_driver()
+    data = scrape_merx()
 
-    all_results = []
+    save_csv(data)
 
-    try:
-
-        merx_results = scrape_merx(driver)
-        all_results.extend(merx_results)
-
-    finally:
-
-        driver.quit()
-
-    save_results(all_results)
-
-    print("Done")
+    print("Done.")
