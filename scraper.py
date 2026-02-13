@@ -1,6 +1,5 @@
 import time
 import csv
-from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -15,24 +14,24 @@ MAX_PAGES = 7
 
 
 # ========================
-# SETUP DRIVER (GitHub Safe)
+# DRIVER SETUP (GitHub Safe)
 # ========================
 
 def setup_driver():
 
-    chrome_options = Options()
+    options = Options()
 
-    chrome_options.add_argument("--headless=new")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--window-size=1920,1080")
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
 
-    chrome_options.add_argument(
+    options.add_argument(
         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     )
 
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(options=options)
 
     return driver
 
@@ -50,7 +49,6 @@ def save_csv(data):
     keys = data[0].keys()
 
     with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
-
         writer = csv.DictWriter(f, keys)
         writer.writeheader()
         writer.writerows(data)
@@ -65,27 +63,31 @@ def save_csv(data):
 def scrape_merx():
 
     driver = setup_driver()
-    wait = WebDriverWait(driver, 30)
+    wait = WebDriverWait(driver, 40)
 
     results = []
 
-    print("Opening MERX...")
+    print("Opening MERX homepage...")
     driver.get("https://www.merx.com")
 
+    wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
     time.sleep(5)
 
-    print("Clicking Canadian Public Opportunities...")
+
+    # ---- OPEN CANADIAN PUBLIC OPPORTUNITIES ----
+    print("Opening Canadian Public Opportunities...")
 
     canadian = wait.until(EC.element_to_be_clickable((
         By.XPATH,
-        "//a[contains(text(),'Canadian Public Opportunities')]"
+        "//a[contains(@href,'/public/solicitations')]"
     )))
 
-    canadian.click()
-
+    driver.execute_script("arguments[0].click();", canadian)
     time.sleep(5)
 
-    print("Typing health in search...")
+
+    # ---- SEARCH HEALTH ----
+    print("Searching for health...")
 
     search_box = wait.until(EC.presence_of_element_located((
         By.XPATH,
@@ -98,16 +100,21 @@ def scrape_merx():
 
     time.sleep(5)
 
-    print("Selecting Open Solicitations...")
 
-    status_dropdown = wait.until(EC.presence_of_element_located((
-        By.XPATH,
-        "//select"
-    )))
+    # ---- SELECT OPEN SOLICITATIONS ----
+    print("Filtering Open Solicitations...")
 
-    Select(status_dropdown).select_by_visible_text("Open Solicitations")
+    try:
+        status_dropdown = wait.until(EC.presence_of_element_located((
+            By.XPATH,
+            "//select"
+        )))
 
-    time.sleep(5)
+        Select(status_dropdown).select_by_visible_text("Open Solicitations")
+        time.sleep(5)
+
+    except:
+        print("Open filter not found, continuing...")
 
 
     # ========================
@@ -116,7 +123,7 @@ def scrape_merx():
 
     for page in range(1, MAX_PAGES + 1):
 
-        print(f"Scanning Page {page}...")
+        print(f"\nScanning Page {page}...")
 
         wait.until(EC.presence_of_all_elements_located((
             By.XPATH,
@@ -133,9 +140,7 @@ def scrape_merx():
         for card in cards:
 
             try:
-
                 title = card.text.strip()
-
                 link = card.get_attribute("href")
 
                 try:
@@ -155,18 +160,16 @@ def scrape_merx():
                 })
 
             except Exception as e:
+                print("Error parsing card:", e)
 
-                print("Error:", e)
 
-
-        # Next page
+        # ---- NEXT PAGE ----
         if page < MAX_PAGES:
 
             try:
-
                 next_button = driver.find_element(
                     By.XPATH,
-                    "//a[contains(@class,'next')]"
+                    "//a[@aria-label='Next']"
                 )
 
                 driver.execute_script(
@@ -177,7 +180,6 @@ def scrape_merx():
                 time.sleep(5)
 
             except:
-
                 print("No more pages")
                 break
 
