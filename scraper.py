@@ -1,280 +1,144 @@
 import time
-import os
+import csv
 from datetime import datetime
-import pandas as pd
 
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait, Select
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 
-from transformers import pipeline
 
-# =====================================
+# =========================
 # CONFIG
-# =====================================
+# =========================
 
-MIN_DATE = datetime(2026, 1, 1)   # change or pass dynamically later
-MAX_PAGES = 7
-CONFIDENCE_THRESHOLD = 0.5
+OUTPUT_FILE = "rfp_results.csv"
+MERX_URL = "https://www.merx.com"
 
-entries = []
 
-# =====================================
-# STEALTH CHROME SETUP
-# =====================================
+# =========================
+# DRIVER SETUP (GitHub Actions Safe)
+# =========================
 
-options = webdriver.ChromeOptions()
+def setup_driver():
 
-options.add_argument("--headless=new")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
+    chrome_options = Options()
 
-options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument("--headless=new")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
 
-options.add_argument("--disable-blink-features=AutomationControlled")
-
-options.add_experimental_option("excludeSwitches", ["enable-automation"])
-options.add_experimental_option("useAutomationExtension", False)
-
-driver = webdriver.Chrome(options=options)
-
-# hide webdriver flag
-driver.execute_script(
-    "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-)
-
-wait = WebDriverWait(driver, 30)
-
-# =====================================
-# OPEN MERX
-# =====================================
-
-print("Opening MERX...")
-
-driver.get("https://www.merx.com")
-
-wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-time.sleep(5)
-
-# =====================================
-# CLICK CANADIAN TENDERS
-# =====================================
-
-print("Opening Canadian Tenders...")
-
-canadian = wait.until(EC.presence_of_element_located((
-    By.XPATH,
-    "//a[contains(text(),'Canadian Tenders')]"
-)))
-
-driver.execute_script("arguments[0].click();", canadian)
-
-time.sleep(5)
-
-# =====================================
-# SEARCH HEALTH
-# =====================================
-
-print("Searching health...")
-
-search_box = wait.until(EC.presence_of_element_located((
-    By.XPATH,
-    "//input[contains(@type,'text')]"
-)))
-
-search_box.clear()
-search_box.send_keys("health")
-search_box.send_keys(Keys.ENTER)
-
-time.sleep(5)
-
-# =====================================
-# SELECT OPEN SOLICITATIONS
-# =====================================
-
-print("Filtering Open Solicitations...")
-
-dropdown = wait.until(EC.presence_of_element_located((
-    By.XPATH,
-    "//select"
-)))
-
-Select(dropdown).select_by_visible_text("Open Solicitations")
-
-time.sleep(5)
-
-# =====================================
-# SCRAPE PAGES
-# =====================================
-
-print("Scraping pages...")
-
-for page in range(1, MAX_PAGES + 1):
-
-    print(f"Page {page}")
-
-    wait.until(EC.presence_of_all_elements_located((
-        By.XPATH,
-        "//a[contains(@class,'solicitation-link')]"
-    )))
-
-    cards = driver.find_elements(
-        By.XPATH,
-        "//a[contains(@class,'solicitation-link')]"
+    chrome_options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     )
 
-    print("Found:", len(cards))
+    driver = webdriver.Chrome(options=chrome_options)
 
-    for card in cards:
-
-        try:
-
-            title = card.find_element(
-                By.XPATH,
-                ".//span[contains(@class,'rowTitle')]"
-            ).text.strip()
-
-            link = card.get_attribute("href")
-
-            if link.startswith("/"):
-                link = "https://www.merx.com" + link
-
-            published = card.find_element(
-                By.XPATH,
-                ".//span[contains(@class,'publicationDate')]//span[@class='dateValue']"
-            ).text.strip()
-
-            post_date = datetime.strptime(published, "%Y/%m/%d")
-
-            if post_date < MIN_DATE:
-                continue
-
-            # OPEN DETAILS TAB
-            driver.execute_script("window.open(arguments[0]);", link)
-            driver.switch_to.window(driver.window_handles[1])
-
-            time.sleep(3)
-
-            try:
-                description = driver.find_element(
-                    By.ID,
-                    "descriptionText"
-                ).text.strip()
-            except:
-                description = ""
-
-            driver.close()
-            driver.switch_to.window(driver.window_handles[0])
-
-            entries.append({
-                "Title": title,
-                "Link": link,
-                "Published Date": published,
-                "Description": description
-            })
-
-        except:
-            continue
-
-    # NEXT PAGE
-    if page < MAX_PAGES:
-
-        try:
-
-            next_button = wait.until(EC.presence_of_element_located((
-                By.XPATH,
-                "//a[contains(@class,'next')]"
-            )))
-
-            driver.execute_script(
-                "arguments[0].click();",
-                next_button
-            )
-
-            time.sleep(5)
-
-        except:
-            print("No more pages")
-            break
+    return driver
 
 
-driver.quit()
+# =========================
+# SAFE GET FUNCTION
+# =========================
 
-print("Total scraped:", len(entries))
+def safe_get(driver, url):
 
-if len(entries) == 0:
-    print("No data found")
-    exit()
+    print(f"Opening {url}")
 
-# =====================================
-# CLASSIFICATION
-# =====================================
+    driver.get(url)
 
-print("Loading classifier...")
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.TAG_NAME, "body"))
+    )
 
-classifier = pipeline(
-    "zero-shot-classification",
-    model="valhalla/distilbart-mnli-12-3"
-)
+    time.sleep(3)
 
-candidate_labels = [
-    "IT Services",
-    "IT Solutions",
-    "IT Product",
-    "IT Consultancy",
-    "AI-Based Opportunity",
-    "Hardware Requirement"
-]
 
-df = pd.DataFrame(entries)
+# =========================
+# SCRAPE MERX
+# =========================
 
-df["Text"] = df["Title"] + ". " + df["Description"]
+def scrape_merx(driver):
 
-predicted = []
-scores = []
+    results = []
 
-print("Classifying...")
+    try:
 
-for text in df["Text"]:
+        safe_get(driver, MERX_URL)
 
-    text = text[:1000]
+        print("Looking for opportunities...")
 
-    result = classifier(text, candidate_labels)
+        # wait for links to load
+        links = WebDriverWait(driver, 30).until(
+            EC.presence_of_all_elements_located((By.TAG_NAME, "a"))
+        )
 
-    label = result["labels"][0]
-    score = result["scores"][0]
+        for link in links:
 
-    if label == "Hardware Requirement":
-        predicted.append("Not Eligible")
-    else:
-        predicted.append(label)
+            text = link.text.strip()
+            href = link.get_attribute("href")
 
-    scores.append(score)
+            if text and href and "opportunity" in href.lower():
 
-df["Category"] = predicted
-df["Confidence"] = scores
+                results.append({
+                    "title": text,
+                    "url": href,
+                    "source": "MERX",
+                    "date": datetime.now().strftime("%Y-%m-%d")
+                })
 
-# =====================================
-# FILTER
-# =====================================
+    except Exception as e:
 
-df = df[
-    (df["Category"] != "Not Eligible")
-    &
-    (df["Confidence"] >= CONFIDENCE_THRESHOLD)
-]
+        print("MERX scraping failed:", e)
 
-print("Final count:", len(df))
+    return results
 
-# =====================================
-# SAVE
-# =====================================
 
-filename = "MERX_Health_IT_Filtered.xlsx"
+# =========================
+# SAVE CSV
+# =========================
 
-df.to_excel(filename, index=False)
+def save_results(results):
 
-print("Saved:", os.path.abspath(filename))
+    if not results:
+        print("No results found")
+        return
+
+    keys = results[0].keys()
+
+    with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
+
+        writer = csv.DictWriter(f, keys)
+        writer.writeheader()
+        writer.writerows(results)
+
+    print(f"Saved {len(results)} results")
+
+
+# =========================
+# MAIN
+# =========================
+
+if __name__ == "__main__":
+
+    driver = setup_driver()
+
+    all_results = []
+
+    try:
+
+        merx_results = scrape_merx(driver)
+        all_results.extend(merx_results)
+
+    finally:
+
+        driver.quit()
+
+    save_results(all_results)
+
+    print("Done")
