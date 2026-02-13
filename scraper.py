@@ -1,202 +1,218 @@
 import time
 import csv
+from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait, Select
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
-OUTPUT_FILE = "merx_test_results.csv"
+OUTPUT_FILE = "rfp_results.csv"
 MAX_PAGES = 7
 
 
-# ========================
-# DRIVER SETUP (GitHub Safe)
-# ========================
+# =========================
+# DRIVER SETUP (HEADLESS SAFE)
+# =========================
 
 def setup_driver():
 
-    options = Options()
+    chrome_options = Options()
 
-    options.add_argument("--headless=new")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument("--headless=new")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
 
-    options.add_argument(
+    chrome_options.add_argument("--window-size=1920,1080")
+
+    chrome_options.add_argument(
         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     )
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(options=chrome_options)
 
     return driver
 
 
-# ========================
-# SAVE CSV
-# ========================
-
-def save_csv(data):
-
-    if not data:
-        print("No results found")
-        return
-
-    keys = data[0].keys()
-
-    with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, keys)
-        writer.writeheader()
-        writer.writerows(data)
-
-    print(f"Saved {len(data)} results to CSV")
-
-
-# ========================
-# SCRAPER
-# ========================
+# =========================
+# SCRAPE FUNCTION
+# =========================
 
 def scrape_merx():
 
     driver = setup_driver()
-    wait = WebDriverWait(driver, 40)
+    wait = WebDriverWait(driver, 30)
 
     results = []
 
-    print("Opening MERX homepage...")
-    driver.get("https://www.merx.com")
-
-    wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-    time.sleep(5)
-
-
-    # ---- OPEN CANADIAN PUBLIC OPPORTUNITIES ----
-    print("Opening Canadian Public Opportunities...")
-
-    canadian = wait.until(EC.element_to_be_clickable((
-        By.XPATH,
-        "//a[contains(@href,'/public/solicitations')]"
-    )))
-
-    driver.execute_script("arguments[0].click();", canadian)
-    time.sleep(5)
-
-
-    # ---- SEARCH HEALTH ----
-    print("Searching for health...")
-
-    search_box = wait.until(EC.presence_of_element_located((
-        By.XPATH,
-        "//input[contains(@placeholder,'Search')]"
-    )))
-
-    search_box.clear()
-    search_box.send_keys("health")
-    search_box.send_keys(Keys.ENTER)
-
-    time.sleep(5)
-
-
-    # ---- SELECT OPEN SOLICITATIONS ----
-    print("Filtering Open Solicitations...")
-
     try:
-        status_dropdown = wait.until(EC.presence_of_element_located((
-            By.XPATH,
-            "//select"
-        )))
 
-        Select(status_dropdown).select_by_visible_text("Open Solicitations")
+        print("Opening MERX homepage...")
+        driver.get("https://www.merx.com")
+
         time.sleep(5)
 
-    except:
-        print("Open filter not found, continuing...")
+        # =========================
+        # CLICK CANADIAN OPPORTUNITIES
+        # =========================
 
+        print("Opening Canadian Public Opportunities...")
 
-    # ========================
-    # PAGE LOOP
-    # ========================
-
-    for page in range(1, MAX_PAGES + 1):
-
-        print(f"\nScanning Page {page}...")
-
-        wait.until(EC.presence_of_all_elements_located((
+        canadian = wait.until(EC.element_to_be_clickable((
             By.XPATH,
-            "//a[contains(@class,'solicitation-link')]"
+            "//a[contains(@href,'/public/solicitations')]"
         )))
 
-        cards = driver.find_elements(
-            By.XPATH,
-            "//a[contains(@class,'solicitation-link')]"
-        )
+        driver.execute_script("arguments[0].click();", canadian)
 
-        print(f"Found {len(cards)} opportunities")
+        time.sleep(5)
 
-        for card in cards:
+        # =========================
+        # FIND SEARCH BOX SAFELY
+        # =========================
 
-            try:
-                title = card.text.strip()
-                link = card.get_attribute("href")
+        print("Finding search box...")
 
-                try:
-                    date = card.find_element(
-                        By.XPATH,
-                        ".//span[contains(@class,'dateValue')]"
-                    ).text.strip()
-                except:
-                    date = "Unknown"
+        inputs = driver.find_elements(By.XPATH, "//input")
 
-                print(title, "|", date)
+        search_box = None
 
-                results.append({
-                    "Title": title,
-                    "Date": date,
-                    "Link": link
-                })
+        for inp in inputs:
 
-            except Exception as e:
-                print("Error parsing card:", e)
+            placeholder = inp.get_attribute("placeholder")
 
-
-        # ---- NEXT PAGE ----
-        if page < MAX_PAGES:
-
-            try:
-                next_button = driver.find_element(
-                    By.XPATH,
-                    "//a[@aria-label='Next']"
-                )
-
-                driver.execute_script(
-                    "arguments[0].click();",
-                    next_button
-                )
-
-                time.sleep(5)
-
-            except:
-                print("No more pages")
+            if placeholder and "search" in placeholder.lower():
+                search_box = inp
                 break
 
+        if search_box is None:
+            raise Exception("Search box not found")
 
-    driver.quit()
+        driver.execute_script("arguments[0].scrollIntoView(true);", search_box)
+        driver.execute_script("arguments[0].click();", search_box)
+
+        time.sleep(2)
+
+        print("Typing health...")
+
+        search_box.send_keys("health")
+        search_box.send_keys(Keys.ENTER)
+
+        time.sleep(5)
+
+        # =========================
+        # PAGE LOOP
+        # =========================
+
+        for page in range(1, MAX_PAGES + 1):
+
+            print(f"Scanning page {page}")
+
+            wait.until(EC.presence_of_all_elements_located((
+                By.XPATH,
+                "//a[contains(@class,'solicitation-link')]"
+            )))
+
+            cards = driver.find_elements(
+                By.XPATH,
+                "//a[contains(@class,'solicitation-link')]"
+            )
+
+            print("Found cards:", len(cards))
+
+            for card in cards:
+
+                try:
+
+                    title = card.find_element(
+                        By.XPATH,
+                        ".//span[contains(@class,'rowTitle')]"
+                    ).text.strip()
+
+                    link = card.get_attribute("href")
+
+                    published = card.find_element(
+                        By.XPATH,
+                        ".//span[contains(@class,'publicationDate')]//span"
+                    ).text.strip()
+
+                    results.append({
+                        "title": title,
+                        "published": published,
+                        "link": link
+                    })
+
+                except Exception as e:
+                    print("Card error:", e)
+
+
+            # NEXT PAGE
+            if page < MAX_PAGES:
+
+                try:
+
+                    next_button = wait.until(
+                        EC.element_to_be_clickable((
+                            By.XPATH,
+                            "//a[contains(@class,'next')]"
+                        ))
+                    )
+
+                    driver.execute_script(
+                        "arguments[0].click();",
+                        next_button
+                    )
+
+                    time.sleep(5)
+
+                except Exception:
+
+                    print("No more pages")
+                    break
+
+
+    finally:
+
+        driver.quit()
 
     return results
 
 
-# ========================
+# =========================
+# SAVE CSV
+# =========================
+
+def save_results(results):
+
+    if not results:
+        print("No results found")
+        return
+
+    keys = results[0].keys()
+
+    with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
+
+        writer = csv.DictWriter(f, keys)
+
+        writer.writeheader()
+
+        writer.writerows(results)
+
+    print(f"Saved {len(results)} results to {OUTPUT_FILE}")
+
+
+# =========================
 # MAIN
-# ========================
+# =========================
 
 if __name__ == "__main__":
 
     data = scrape_merx()
 
-    save_csv(data)
+    save_results(data)
 
-    print("Done.")
+    print("Done")
