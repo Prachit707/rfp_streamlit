@@ -15,7 +15,7 @@ MAX_PAGES = 7
 
 
 # =========================
-# DRIVER SETUP (HEADLESS SAFE)
+# DRIVER SETUP
 # =========================
 
 def setup_driver():
@@ -39,7 +39,7 @@ def setup_driver():
 
 
 # =========================
-# SCRAPE FUNCTION
+# SCRAPER
 # =========================
 
 def scrape_merx():
@@ -56,10 +56,6 @@ def scrape_merx():
 
         time.sleep(5)
 
-        # =========================
-        # CLICK CANADIAN OPPORTUNITIES
-        # =========================
-
         print("Opening Canadian Public Opportunities...")
 
         canadian = wait.until(EC.element_to_be_clickable((
@@ -72,30 +68,23 @@ def scrape_merx():
         time.sleep(5)
 
         # =========================
-        # FIND SEARCH BOX SAFELY
+        # TARGET CORRECT SEARCH BOX
         # =========================
 
-        print("Finding search box...")
+        print("Locating active search box...")
 
-        inputs = driver.find_elements(By.XPATH, "//input")
+        search_box = wait.until(EC.element_to_be_clickable((
+            By.XPATH,
+            "//form//input[@type='text' and not(@disabled)]"
+        )))
 
-        search_box = None
+        # force focus via JS
+        driver.execute_script("""
+            arguments[0].focus();
+            arguments[0].value = '';
+        """, search_box)
 
-        for inp in inputs:
-
-            placeholder = inp.get_attribute("placeholder")
-
-            if placeholder and "search" in placeholder.lower():
-                search_box = inp
-                break
-
-        if search_box is None:
-            raise Exception("Search box not found")
-
-        driver.execute_script("arguments[0].scrollIntoView(true);", search_box)
-        driver.execute_script("arguments[0].click();", search_box)
-
-        time.sleep(2)
+        time.sleep(1)
 
         print("Typing health...")
 
@@ -103,6 +92,7 @@ def scrape_merx():
         search_box.send_keys(Keys.ENTER)
 
         time.sleep(5)
+
 
         # =========================
         # PAGE LOOP
@@ -122,7 +112,7 @@ def scrape_merx():
                 "//a[contains(@class,'solicitation-link')]"
             )
 
-            print("Found cards:", len(cards))
+            print("Cards found:", len(cards))
 
             for card in cards:
 
@@ -146,8 +136,8 @@ def scrape_merx():
                         "link": link
                     })
 
-                except Exception as e:
-                    print("Card error:", e)
+                except:
+                    continue
 
 
             # NEXT PAGE
@@ -155,12 +145,10 @@ def scrape_merx():
 
                 try:
 
-                    next_button = wait.until(
-                        EC.element_to_be_clickable((
-                            By.XPATH,
-                            "//a[contains(@class,'next')]"
-                        ))
-                    )
+                    next_button = wait.until(EC.element_to_be_clickable((
+                        By.XPATH,
+                        "//a[contains(@class,'next')]"
+                    )))
 
                     driver.execute_script(
                         "arguments[0].click();",
@@ -169,7 +157,7 @@ def scrape_merx():
 
                     time.sleep(5)
 
-                except Exception:
+                except:
 
                     print("No more pages")
                     break
@@ -202,7 +190,7 @@ def save_results(results):
 
         writer.writerows(results)
 
-    print(f"Saved {len(results)} results to {OUTPUT_FILE}")
+    print(f"Saved {len(results)} results")
 
 
 # =========================
