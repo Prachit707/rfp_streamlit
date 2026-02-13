@@ -1,0 +1,8 @@
+streamlit
+selenium
+pandas
+torch
+transformers
+tqdm
+webdriver-manager
+openpyxl
