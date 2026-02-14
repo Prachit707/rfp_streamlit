@@ -146,7 +146,7 @@ def parse_date(date_str: str):
 def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: int, min_date: str):
     """Trigger GitHub Actions workflow."""
     
-    url = f"https://api.github.com/repos/{repo}/actions/workflows/update_dashboard.yml/dispatches"
+    url =f"https://api.github.com/repos/{repo}/actions/workflows/scraper.yml/dispatches"
     
     headers = {
         "Accept": "application/vnd.github+json",
@@ -429,3 +429,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
