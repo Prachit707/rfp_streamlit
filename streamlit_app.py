@@ -146,9 +146,6 @@ def parse_date(date_str: str):
 def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: int, min_date: str):
     """Trigger GitHub Actions workflow."""
     
-    def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: int, min_date: str):
-    """Trigger GitHub Actions workflow."""
-    
     url = f"https://api.github.com/repos/{repo}/actions/workflows/scraper.yml/dispatches"
     
     headers = {
@@ -178,11 +175,11 @@ def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: 
         st.error(f"Error triggering workflow: {e}")
         return False
 
+
 def main():
     # Header
     st.markdown('<div class="main-header">📋 MERX Opportunities Dashboard</div>', unsafe_allow_html=True)
     
-    # Workflow Trigger Section
     # Workflow Trigger Section
     st.markdown('<div class="trigger-section">', unsafe_allow_html=True)
     st.markdown("### 🔄 Run New Scrape")
@@ -204,7 +201,9 @@ def main():
     if trigger_button:
         # Fixed values
         search_term = "health"
-        max_pages = 5        # Get secrets
+        max_pages = 5
+        
+        # Get secrets
         try:
             github_token = st.secrets["GITHUB_TOKEN"]
             github_repo = st.secrets["GITHUB_REPO"]
@@ -408,9 +407,16 @@ def main():
         top_orgs = df['organization'].value_counts().head(10).reset_index()
         top_orgs.columns = ['Organization', 'Count']
         st.dataframe(top_orgs, use_container_width=True)
+    
+    # Footer
+    st.markdown("---")
+    st.markdown("""
+        <div style="text-align: center; color: #666; font-size: 0.9rem;">
+            Data scraped from <a href="https://www.merx.com/public/solicitations/open" target="_blank">MERX</a> | 
+            Built with Streamlit
+        </div>
+    """, unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()
-
-
-
