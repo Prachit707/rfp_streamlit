@@ -146,7 +146,10 @@ def parse_date(date_str: str):
 def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: int, min_date: str):
     """Trigger GitHub Actions workflow."""
     
-    url =f"https://api.github.com/repos/{repo}/actions/workflows/scraper.yml/dispatches"
+    def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: int, min_date: str):
+    """Trigger GitHub Actions workflow."""
+    
+    url = f"https://api.github.com/repos/{repo}/actions/workflows/scraper.yml/dispatches"
     
     headers = {
         "Accept": "application/vnd.github+json",
@@ -165,11 +168,15 @@ def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: 
     
     try:
         response = requests.post(url, headers=headers, json=data)
-        return response.status_code == 204
+        if response.status_code == 204:
+            return True
+        else:
+            st.error(f"GitHub API Error: Status {response.status_code}")
+            st.error(f"Response: {response.text}")
+            return False
     except Exception as e:
         st.error(f"Error triggering workflow: {e}")
         return False
-
 
 def main():
     # Header
@@ -391,40 +398,19 @@ def main():
     else:  # Analytics View
         st.subheader("📈 Analytics")
         
-        col1, col2 = st.columns(2)
+        st.markdown("#### Opportunities by Organization")
+        org_counts = df['organization'].value_counts().head(10)
+        st.bar_chart(org_counts)
         
-        with col1:
-            st.markdown("#### Opportunities by Organization")
-            org_counts = df['organization'].value_counts().head(10)
-            st.bar_chart(org_counts)
+        st.markdown("---")
         
-        with col2:
-            st.markdown("#### Opportunities by Page")
-            if 'page' in df.columns:
-                page_counts = df['page'].value_counts().sort_index()
-                st.bar_chart(page_counts)
-        
-        st.markdown("#### Closing Dates Distribution")
-        if 'closing_date' in df.columns:
-            closing_dates = df['closing_date'].value_counts().head(15)
-            st.bar_chart(closing_dates)
-        
-        st.markdown("#### Top 10 Organizations")
+        st.markdown("#### Top Organizations - Detailed View")
         top_orgs = df['organization'].value_counts().head(10).reset_index()
         top_orgs.columns = ['Organization', 'Count']
         st.dataframe(top_orgs, use_container_width=True)
-    
-    # Footer
-    st.markdown("---")
-    st.markdown("""
-        <div style="text-align: center; color: #666; font-size: 0.9rem;">
-            Data scraped from <a href="https://www.merx.com/public/solicitations/open" target="_blank">MERX</a> | 
-            Built with Streamlit
-        </div>
-    """, unsafe_allow_html=True)
-
 
 if __name__ == "__main__":
     main()
+
 
 
