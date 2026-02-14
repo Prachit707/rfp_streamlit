@@ -176,31 +176,28 @@ def main():
     st.markdown('<div class="main-header">📋 MERX Opportunities Dashboard</div>', unsafe_allow_html=True)
     
     # Workflow Trigger Section
+    # Workflow Trigger Section
     st.markdown('<div class="trigger-section">', unsafe_allow_html=True)
     st.markdown("### 🔄 Run New Scrape")
     
-    col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
+    col1, col2 = st.columns([3, 1])
     
     with col1:
-        search_term = st.text_input("Search term", value="health", key="search")
-    
-    with col2:
-        max_pages = st.number_input("Max pages", min_value=1, max_value=10, value=5, key="pages")
-    
-    with col3:
         min_date = st.date_input(
-            "Min published date",
+            "📅 Select minimum published date (opportunities published on or after this date will be collected)",
             value=date(2025, 12, 10),
             key="date"
         )
     
-    with col4:
+    with col2:
         st.write("")  # Spacing
         st.write("")  # Spacing
         trigger_button = st.button("🚀 Run Scraper", type="primary", use_container_width=True)
     
     if trigger_button:
-        # Get secrets
+        # Fixed values
+        search_term = "health"
+        max_pages = 5        # Get secrets
         try:
             github_token = st.secrets["GITHUB_TOKEN"]
             github_repo = st.secrets["GITHUB_REPO"]
@@ -429,4 +426,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
