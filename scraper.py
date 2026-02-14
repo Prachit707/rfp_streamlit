@@ -135,3 +135,335 @@ class MERXScraper:
         except Exception as e:
             logger.error(f"Error during search: {e}")
             return False
+    
+    def _extract_link_from_row(self, row) -> Optional[str]:
+        """Extract the opportunity link from a row."""
+        try:
+            links = row.find_elements(By.TAG_NAME, "a")
+            for link in links:
+                href = link.get_attribute('href')
+                if href and ('view-notice' in href or 'solicitation' in href):
+                    return href
+            if links:
+                return links[0].get_attribute('href')
+        except Exception as e:
+            logger.debug(f"Error extracting link: {e}")
+        return None
+    
+    def _parse_date(self, date_str: str) -> Optional[datetime]:
+        """Try to parse a date string into a datetime object."""
+        if not date_str:
+            return None
+        
+        formats = [
+            '%Y-%m-%d',
+            '%b %d, %Y',
+            '%B %d, %Y',
+            '%d/%m/%Y',
+            '%m/%d/%Y',
+            '%Y/%m/%d',
+            '%d-%m-%Y',
+            '%m-%d-%Y',
+        ]
+        
+        for fmt in formats:
+            try:
+                return datetime.strptime(date_str.strip(), fmt)
+            except:
+                continue
+        return None
+    
+    def _scrape_page(self, page_num: int) -> List[Dict]:
+        """Scrape solicitations from the current page."""
+        results = []
+        
+        selectors_to_try = [
+            "table tbody tr",
+            "tr",
+            "div[role='row']",
+            ".solicitation-row",
+            ".opportunity-row",
+            "li.solicitation",
+        ]
+        
+        rows = []
+        for selector in selectors_to_try:
+            rows = self.driver.find_elements(By.CSS_SELECTOR, selector)
+            if rows:
+                logger.info(f"Found {len(rows)} rows using selector: {selector}")
+                break
+        
+        if not rows:
+            logger.warning("No rows found with any selector")
+            return results
+        
+        for idx, row in enumerate(rows):
+            try:
+                row_text = row.text.strip()
+                if not row_text:
+                    continue
+                
+                link = self._extract_link_from_row(row)
+                cols = row.find_elements(By.TAG_NAME, "td")
+                
+                if cols and len(cols) >= 3:
+                    title = cols[0].text.strip() if len(cols) > 0 else ""
+                    organization = cols[1].text.strip() if len(cols) > 1 else ""
+                    
+                    if len(cols) >= 4:
+                        published_date = cols[2].text.strip()
+                        closing_date = cols[3].text.strip()
+                    elif len(cols) == 3:
+                        published_date = ""
+                        closing_date = cols[2].text.strip()
+                    else:
+                        published_date = ""
+                        closing_date = cols[-1].text.strip()
+                else:
+                    lines = [line.strip() for line in row_text.split('\n') if line.strip()]
+                    title = lines[0] if len(lines) > 0 else row_text[:100]
+                    organization = lines[1] if len(lines) > 1 else ""
+                    published_date = ""
+                    closing_date = ""
+                    
+                    for line in lines:
+                        if any(char.isdigit() for char in line):
+                            if not published_date and len(line) < 30:
+                                published_date = line
+                            elif not closing_date and len(line) < 30:
+                                closing_date = line
+                
+                if title and len(title) > 5:
+                    result = {
+                        "title": title,
+                        "organization": organization,
+                        "published_date": published_date,
+                        "closing_date": closing_date,
+                        "link": link or "",
+                        "page": page_num,
+                        "scraped_at": datetime.now().isoformat()
+                    }
+                    results.append(result)
+                    
+                    if self.debug and idx < 5:
+                        logger.debug(f"  Row {idx}:")
+                        logger.debug(f"    Title: {title[:50]}...")
+                        logger.debug(f"    Org: {organization[:40]}")
+                        logger.debug(f"    Published: {published_date}")
+                        logger.debug(f"    Closes: {closing_date}")
+                        logger.debug(f"    Link: {link}")
+                        
+            except Exception as e:
+                logger.debug(f"Error parsing row {idx}: {e}")
+                continue
+        
+        logger.info(f"Collected {len(results)} solicitations from page {page_num}")
+        return results
+    
+    def _go_to_next_page(self) -> bool:
+        """Navigate to the next page of results."""
+        next_button_selectors = [
+            "button[aria-label='Next page']",
+            "button[aria-label='next']",
+            "a.next",
+            "button.next",
+            ".pagination-next",
+            "li.next a",
+        ]
+        
+        for selector in next_button_selectors:
+            try:
+                next_button = self.driver.find_element(By.CSS_SELECTOR, selector)
+                if next_button.is_enabled() and next_button.is_displayed():
+                    logger.info(f"Clicking next page button (selector: {selector})...")
+                    next_button.click()
+                    time.sleep(5)
+                    return True
+            except NoSuchElementException:
+                continue
+            except Exception as e:
+                logger.debug(f"Error with selector {selector}: {e}")
+                continue
+        
+        logger.info("No next button found - reached last page")
+        return False
+    
+    def scrape(self, search_term: str = "health", max_pages: int = 5, min_published_date: str = None) -> List[Dict]:
+        """
+        Scrape MERX solicitations.
+        
+        Args:
+            search_term: The term to search for
+            max_pages: Maximum number of pages to scrape
+            min_published_date: Minimum published date (format: YYYY-MM-DD). Only collect opportunities published on or after this date.
+            
+        Returns:
+            List of solicitation dictionaries
+        """
+        all_results = []
+        
+        # Parse minimum date if provided
+        min_date_obj = None
+        if min_published_date:
+            try:
+                min_date_obj = datetime.strptime(min_published_date, '%Y-%m-%d')
+                logger.info(f"Filtering for opportunities published on or after: {min_published_date}")
+            except Exception as e:
+                logger.warning(f"Could not parse min_published_date '{min_published_date}': {e}")
+        
+        try:
+            # Set up driver
+            self._setup_driver()
+            
+            # Navigate to MERX solicitations page
+            logger.info(f"Opening MERX solicitations page: {self.base_url}")
+            self.driver.get(self.base_url)
+            
+            # Wait for page to load
+            time.sleep(5)
+            
+            # Check if we got a 404
+            if "error 404" in self.driver.page_source.lower():
+                logger.error("✗ Got 404 error - URL might be wrong again")
+                if self.debug:
+                    self.driver.save_screenshot("/tmp/merx_404.png")
+                return all_results
+            
+            logger.info(f"✓ Page loaded: {self.driver.title}")
+            
+            # Perform search (or skip if no search box)
+            self._perform_search(search_term)
+            
+            # Scrape pages
+            page = 1
+            while page <= max_pages:
+                logger.info(f"\n{'='*60}")
+                logger.info(f"Scraping page {page}/{max_pages}")
+                logger.info(f"{'='*60}")
+                
+                # Scrape current page
+                page_results = self._scrape_page(page)
+                
+                # Filter by date if min_date is specified
+                if min_date_obj:
+                    filtered_results = []
+                    for result in page_results:
+                        published_str = result.get('published_date', '')
+                        if published_str:
+                            # Try to parse the published date
+                            published_date_obj = self._parse_date(published_str)
+                            if published_date_obj:
+                                # Only include if published on or after min_date
+                                if published_date_obj >= min_date_obj:
+                                    filtered_results.append(result)
+                            else:
+                                # Can't parse date, include it to be safe
+                                filtered_results.append(result)
+                        else:
+                            # No published date, include it
+                            filtered_results.append(result)
+                    
+                    logger.info(f"After date filtering: {len(filtered_results)} of {len(page_results)} opportunities matched")
+                    all_results.extend(filtered_results)
+                else:
+                    # No date filter, include all
+                    all_results.extend(page_results)
+                
+                # Try to go to next page
+                if page < max_pages:
+                    if not self._go_to_next_page():
+                        logger.info("No more pages available")
+                        break
+                
+                page += 1
+            
+        except Exception as e:
+            logger.error(f"Fatal error during scraping: {e}")
+            import traceback
+            traceback.print_exc()
+        
+        finally:
+            if self.driver:
+                self.driver.quit()
+                logger.info("Browser closed")
+        
+        return all_results
+    
+    def save_results(self, results: List[Dict], filename: str = "/tmp/merx_results.json"):
+        """
+        Save results to a JSON file.
+        
+        Args:
+            results: List of solicitation dictionaries
+            filename: Output filename
+        """
+        try:
+            with open(filename, "w", encoding="utf-8") as f:
+                json.dump(results, f, indent=2, ensure_ascii=False)
+            logger.info(f"✓ Results saved to {filename}")
+        except Exception as e:
+            logger.error(f"Error saving results: {e}")
+
+
+def main():
+    """Main entry point."""
+    print("="*70)
+    print("MERX Solicitations Scraper - Enhanced Version")
+    print("URL: https://www.merx.com/public/solicitations/open")
+    print("="*70)
+    print()
+    
+    # Get parameters from environment variables (for GitHub Actions)
+    search_term = os.getenv('SEARCH_TERM', 'health')
+    max_pages = int(os.getenv('MAX_PAGES', '5'))
+    min_published_date = os.getenv('MIN_PUBLISHED_DATE', None)  # Format: YYYY-MM-DD
+    
+    if min_published_date:
+        print(f"Filtering for opportunities published on or after: {min_published_date}")
+    
+    # Initialize scraper
+    scraper = MERXScraper(
+        headless=True,  # Set to False to see the browser
+        debug=True      # Enable debug mode
+    )
+    
+    # Run scraper
+    results = scraper.scrape(
+        search_term=search_term,
+        max_pages=max_pages,
+        min_published_date=min_published_date
+    )
+    
+    # Display results
+    print("\n" + "="*70)
+    print(f"SCRAPING COMPLETE - Found {len(results)} solicitations")
+    print("="*70 + "\n")
+    
+    for i, sol in enumerate(results, 1):
+        print(f"{i}. {sol['title'][:70]}")
+        print(f"   Organization: {sol['organization'][:50]}")
+        print(f"   Published: {sol['published_date']}")
+        print(f"   Closes: {sol['closing_date']}")
+        print(f"   Link: {sol['link']}")
+        print()
+    
+    # Save results
+    if results:
+        scraper.save_results(results)
+        print(f"\n✓ Full results saved to /tmp/merx_results.json")
+        
+        # Show sample JSON structure
+        print("\nSample JSON structure:")
+        print(json.dumps(results[0] if results else {}, indent=2))
+    else:
+        print("\n⚠ No results to save")
+        print("\nPossible reasons:")
+        print("1. Page structure has changed - check screenshots in /tmp/")
+        print("2. No solicitations match your search term")
+        print("3. Date filter is too restrictive")
+    
+    return results
+
+
+if __name__ == "__main__":
+    main()
