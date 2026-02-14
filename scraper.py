@@ -1,11 +1,6 @@
 """
-MERX Opportunities Scraper
-Production-ready version with comprehensive error handling and debugging.
-
-Requirements:
-- Network access must be enabled
-- Chrome/Chromium browser installed
-- Python packages: selenium
+MERX Scraper - Updated with Correct URL
+Uses: https://www.merx.com/public/solicitations/open
 """
 
 import time
@@ -14,7 +9,6 @@ import logging
 from datetime import datetime
 from typing import List, Dict, Optional
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -22,7 +16,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
-# Set up logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
@@ -31,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 
 class MERXScraper:
-    """Scraper for Canadian MERX procurement opportunities."""
+    """Scraper for Canadian MERX procurement solicitations."""
     
     def __init__(self, headless: bool = True, debug: bool = False):
         """
@@ -45,6 +38,8 @@ class MERXScraper:
         self.debug = debug
         self.driver = None
         self.wait = None
+        # UPDATED URL - solicitations instead of opportunities
+        self.base_url = "https://www.merx.com/public/solicitations/open"
         
     def _setup_driver(self):
         """Set up Chrome WebDriver with optimal options."""
@@ -68,8 +63,6 @@ class MERXScraper:
         # Additional options for stability
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--disable-extensions")
-        chrome_options.add_argument("--disable-infobars")
-        chrome_options.add_argument("--start-maximized")
         
         try:
             self.driver = webdriver.Chrome(options=chrome_options)
@@ -96,13 +89,14 @@ class MERXScraper:
             with open("/tmp/merx_page_source.html", "w", encoding="utf-8") as f:
                 f.write(self.driver.page_source)
             logger.debug("Page source saved to /tmp/merx_page_source.html")
+            self.driver.save_screenshot("/tmp/merx_initial_page.png")
         
         # Get all input elements
         all_inputs = self.driver.find_elements(By.TAG_NAME, "input")
         logger.info(f"Found {len(all_inputs)} input elements on page")
         
         if self.debug:
-            for i, inp in enumerate(all_inputs[:10]):
+            for i, inp in enumerate(all_inputs[:15]):
                 logger.debug(
                     f"  Input {i}: type={inp.get_attribute('type')}, "
                     f"id={inp.get_attribute('id')}, "
@@ -146,10 +140,9 @@ class MERXScraper:
                 logger.info("✓ Found text input (fallback)")
                 return inp
         
-        logger.error("✗ Could not find search box with any strategy")
+        logger.warning("⚠ Could not find search box - page might not have one")
         if self.debug:
             self.driver.save_screenshot("/tmp/merx_no_search_box.png")
-            logger.debug("Screenshot saved to /tmp/merx_no_search_box.png")
         
         return None
     
@@ -166,8 +159,8 @@ class MERXScraper:
         search_box = self._find_search_box()
         
         if not search_box:
-            logger.error("Cannot perform search - no search box found")
-            return False
+            logger.warning("No search box found - will scrape all visible solicitations")
+            return True  # Continue anyway, just without search
         
         try:
             logger.info(f"Entering search term: '{search_term}'")
@@ -184,7 +177,6 @@ class MERXScraper:
             
             if self.debug:
                 self.driver.save_screenshot("/tmp/merx_after_search.png")
-                logger.debug("Screenshot saved to /tmp/merx_after_search.png")
             
             return True
             
@@ -194,38 +186,63 @@ class MERXScraper:
     
     def _scrape_page(self, page_num: int) -> List[Dict]:
         """
-        Scrape opportunities from the current page.
+        Scrape solicitations from the current page.
         
         Args:
             page_num: Current page number
             
         Returns:
-            List of opportunity dictionaries
+            List of solicitation dictionaries
         """
         results = []
         
-        # Try to find table rows
-        rows = self.driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
+        # Try multiple selectors to find the data
+        selectors_to_try = [
+            "table tbody tr",
+            "tr",
+            "div[role='row']",
+            ".solicitation-row",
+            ".opportunity-row",
+            "li.solicitation",
+        ]
+        
+        rows = []
+        for selector in selectors_to_try:
+            rows = self.driver.find_elements(By.CSS_SELECTOR, selector)
+            if rows:
+                logger.info(f"Found {len(rows)} rows using selector: {selector}")
+                break
         
         if not rows:
-            logger.warning("No rows found with 'table tbody tr', trying alternative selectors")
-            rows = self.driver.find_elements(By.CSS_SELECTOR, "tr")
-        
-        logger.info(f"Found {len(rows)} rows on page {page_num}")
+            logger.warning("No rows found with any selector")
+            return results
         
         for idx, row in enumerate(rows):
             try:
-                cols = row.find_elements(By.TAG_NAME, "td")
+                # Try to extract text from the row
+                row_text = row.text.strip()
                 
-                if len(cols) < 4:
+                if not row_text:
                     continue
                 
-                title = cols[0].text.strip()
-                organization = cols[1].text.strip()
-                closing_date = cols[3].text.strip()
+                # Try to find columns (td elements)
+                cols = row.find_elements(By.TAG_NAME, "td")
+                
+                if cols and len(cols) >= 3:
+                    # Structured table format
+                    title = cols[0].text.strip() if len(cols) > 0 else ""
+                    organization = cols[1].text.strip() if len(cols) > 1 else ""
+                    closing_date = cols[-1].text.strip()  # Usually last column
+                    
+                else:
+                    # Fallback: parse from row text
+                    lines = [line.strip() for line in row_text.split('\n') if line.strip()]
+                    title = lines[0] if len(lines) > 0 else row_text[:100]
+                    organization = lines[1] if len(lines) > 1 else ""
+                    closing_date = lines[-1] if len(lines) > 2 else ""
                 
                 # Only add if we have actual data
-                if title and organization:
+                if title and len(title) > 5:  # Ignore very short/empty titles
                     result = {
                         "title": title,
                         "organization": organization,
@@ -235,14 +252,14 @@ class MERXScraper:
                     }
                     results.append(result)
                     
-                    if self.debug:
+                    if self.debug and idx < 5:  # Log first 5 for debugging
                         logger.debug(f"  Row {idx}: {title[:50]}...")
                         
             except Exception as e:
                 logger.debug(f"Error parsing row {idx}: {e}")
                 continue
         
-        logger.info(f"Collected {len(results)} opportunities from page {page_num}")
+        logger.info(f"Collected {len(results)} solicitations from page {page_num}")
         return results
     
     def _go_to_next_page(self) -> bool:
@@ -252,37 +269,45 @@ class MERXScraper:
         Returns:
             True if navigation was successful, False if no more pages
         """
-        try:
-            next_button = self.driver.find_element(
-                By.CSS_SELECTOR, "button[aria-label='Next page']"
-            )
-            
-            if next_button.is_enabled():
-                logger.info("Clicking next page button...")
-                next_button.click()
-                time.sleep(5)
-                return True
-            else:
-                logger.info("Next button is disabled - no more pages")
-                return False
+        # Try multiple selectors for the next button
+        next_button_selectors = [
+            "button[aria-label='Next page']",
+            "button[aria-label='next']",
+            "a.next",
+            "button.next",
+            ".pagination-next",
+            "li.next a",
+        ]
+        
+        for selector in next_button_selectors:
+            try:
+                next_button = self.driver.find_element(By.CSS_SELECTOR, selector)
                 
-        except NoSuchElementException:
-            logger.info("No next button found - reached last page")
-            return False
-        except Exception as e:
-            logger.error(f"Error navigating to next page: {e}")
-            return False
+                if next_button.is_enabled() and next_button.is_displayed():
+                    logger.info(f"Clicking next page button (selector: {selector})...")
+                    next_button.click()
+                    time.sleep(5)
+                    return True
+                    
+            except NoSuchElementException:
+                continue
+            except Exception as e:
+                logger.debug(f"Error with selector {selector}: {e}")
+                continue
+        
+        logger.info("No next button found - reached last page")
+        return False
     
     def scrape(self, search_term: str = "health", max_pages: int = 3) -> List[Dict]:
         """
-        Scrape MERX opportunities.
+        Scrape MERX solicitations.
         
         Args:
             search_term: The term to search for
             max_pages: Maximum number of pages to scrape
             
         Returns:
-            List of opportunity dictionaries
+            List of solicitation dictionaries
         """
         all_results = []
         
@@ -290,14 +315,24 @@ class MERXScraper:
             # Set up driver
             self._setup_driver()
             
-            # Navigate to MERX
-            logger.info("Opening MERX opportunities page...")
-            self.driver.get("https://www.merx.com/public/opportunities")
+            # Navigate to MERX solicitations page
+            logger.info(f"Opening MERX solicitations page: {self.base_url}")
+            self.driver.get(self.base_url)
             
-            # Perform search
-            if not self._perform_search(search_term):
-                logger.error("Search failed - aborting")
+            # Wait for page to load
+            time.sleep(5)
+            
+            # Check if we got a 404
+            if "error 404" in self.driver.page_source.lower():
+                logger.error("✗ Got 404 error - URL might be wrong again")
+                if self.debug:
+                    self.driver.save_screenshot("/tmp/merx_404.png")
                 return all_results
+            
+            logger.info(f"✓ Page loaded: {self.driver.title}")
+            
+            # Perform search (or skip if no search box)
+            self._perform_search(search_term)
             
             # Scrape pages
             page = 1
@@ -330,12 +365,12 @@ class MERXScraper:
         
         return all_results
     
-    def save_results(self, results: List[Dict], filename: str = "merx_results.json"):
+    def save_results(self, results: List[Dict], filename: str = "/tmp/merx_results.json"):
         """
         Save results to a JSON file.
         
         Args:
-            results: List of opportunity dictionaries
+            results: List of solicitation dictionaries
             filename: Output filename
         """
         try:
@@ -349,7 +384,8 @@ class MERXScraper:
 def main():
     """Main entry point."""
     print("="*70)
-    print("MERX Opportunities Scraper")
+    print("MERX Solicitations Scraper")
+    print("URL: https://www.merx.com/public/solicitations/open")
     print("="*70)
     print()
     
@@ -367,22 +403,26 @@ def main():
     
     # Display results
     print("\n" + "="*70)
-    print(f"SCRAPING COMPLETE - Found {len(results)} opportunities")
+    print(f"SCRAPING COMPLETE - Found {len(results)} solicitations")
     print("="*70 + "\n")
     
-    for i, opp in enumerate(results, 1):
-        print(f"{i}. {opp['title']}")
-        print(f"   Organization: {opp['organization']}")
-        print(f"   Closes: {opp['closing_date']}")
-        print(f"   Page: {opp['page']}")
+    for i, sol in enumerate(results, 1):
+        print(f"{i}. {sol['title'][:80]}")
+        print(f"   Organization: {sol['organization'][:60]}")
+        print(f"   Closes: {sol['closing_date']}")
+        print(f"   Page: {sol['page']}")
         print()
     
     # Save results
     if results:
-        scraper.save_results(results, "/tmp/merx_results.json")
+        scraper.save_results(results)
         print(f"\n✓ Full results saved to /tmp/merx_results.json")
     else:
         print("\n⚠ No results to save")
+        print("\nPossible reasons:")
+        print("1. Page structure has changed - check screenshots in /tmp/")
+        print("2. No solicitations match your search term")
+        print("3. Page requires authentication")
     
     return results
 
