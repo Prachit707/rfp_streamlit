@@ -11,7 +11,11 @@ on:
       max_pages:
         description: 'Maximum number of pages to scrape'
         required: false
-        default: '3'
+        default: '5'
+      min_published_date:
+        description: 'Minimum published date (YYYY-MM-DD) - only collect opportunities published on or after this date'
+        required: false
+        default: ''
   
   # Run on schedule (daily at 9 AM UTC)
   schedule:
@@ -46,10 +50,16 @@ jobs:
       - name: Run scraper
         run: |
           echo "Scraping MERX..."
+          echo "Search term: $SEARCH_TERM"
+          echo "Max pages: $MAX_PAGES"
+          if [ -n "$MIN_PUBLISHED_DATE" ]; then
+            echo "Min published date: $MIN_PUBLISHED_DATE"
+          fi
           python scraper.py
         env:
           SEARCH_TERM: ${{ github.event.inputs.search_term || 'health' }}
-          MAX_PAGES: ${{ github.event.inputs.max_pages || '3' }}
+          MAX_PAGES: ${{ github.event.inputs.max_pages || '5' }}
+          MIN_PUBLISHED_DATE: ${{ github.event.inputs.min_published_date || '' }}
       
       - name: Copy results to app directory
         run: |
