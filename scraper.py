@@ -1,5 +1,5 @@
 """
-MERX Scraper - Enhanced with Date Filter
+MERX Scraper - Enhanced with Date Filter and Fixed Pagination
 Uses: https://www.merx.com/public/solicitations/open
 """
 
@@ -157,11 +157,11 @@ class MERXScraper:
         
         formats = [
             '%Y-%m-%d',
+            '%Y/%m/%d',
             '%b %d, %Y',
             '%B %d, %Y',
             '%d/%m/%Y',
             '%m/%d/%Y',
-            '%Y/%m/%d',
             '%d-%m-%Y',
             '%m-%d-%Y',
         ]
@@ -263,29 +263,58 @@ class MERXScraper:
     def _go_to_next_page(self) -> bool:
         """Navigate to the next page of results."""
         next_button_selectors = [
-            "button[aria-label='Next page']",
-            "button[aria-label='next']",
             "a.next",
             "button.next",
+            "button[aria-label='Next page']",
+            "button[aria-label='next']",
             ".pagination-next",
             "li.next a",
+            "a[aria-label='Next']",
         ]
         
         for selector in next_button_selectors:
             try:
-                next_button = self.driver.find_element(By.CSS_SELECTOR, selector)
-                if next_button.is_enabled() and next_button.is_displayed():
-                    logger.info(f"Clicking next page button (selector: {selector})...")
-                    next_button.click()
-                    time.sleep(5)
+                next_buttons = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                
+                for next_button in next_buttons:
+                    if not next_button.is_displayed():
+                        continue
+                    
+                    # Check if disabled
+                    disabled = next_button.get_attribute('disabled')
+                    aria_disabled = next_button.get_attribute('aria-disabled')
+                    classes = next_button.get_attribute('class') or ''
+                    
+                    if disabled or aria_disabled == 'true' or 'disabled' in classes.lower():
+                        logger.info(f"Next button disabled (selector: {selector})")
+                        continue
+                    
+                    logger.info(f"Found clickable next button (selector: {selector})")
+                    
+                    # Scroll and click
+                    self.driver.execute_script("arguments[0].scrollIntoView(true);", next_button)
+                    time.sleep(1)
+                    
+                    try:
+                        next_button.click()
+                    except:
+                        # Try JavaScript click if normal click fails
+                        self.driver.execute_script("arguments[0].click();", next_button)
+                    
+                    # Wait for page to load
+                    logger.info("Waiting for next page to load...")
+                    time.sleep(10)
+                    
+                    logger.info("✓ Clicked next page button")
                     return True
+                    
             except NoSuchElementException:
                 continue
             except Exception as e:
                 logger.debug(f"Error with selector {selector}: {e}")
                 continue
         
-        logger.info("No next button found - reached last page")
+        logger.info("No more clickable next buttons found - reached last page")
         return False
     
     def scrape(self, search_term: str = "health", max_pages: int = 5, min_published_date: str = None) -> List[Dict]:
@@ -356,6 +385,8 @@ class MERXScraper:
                                 # Only include if published on or after min_date
                                 if published_date_obj >= min_date_obj:
                                     filtered_results.append(result)
+                                else:
+                                    logger.debug(f"Filtered out: {result['title'][:40]} (published: {published_str})")
                             else:
                                 # Can't parse date, include it to be safe
                                 filtered_results.append(result)
