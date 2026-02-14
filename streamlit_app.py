@@ -1,6 +1,6 @@
 """
 MERX Opportunities Dashboard
-Streamlit app with workflow trigger capability
+Streamlit app with workflow trigger and on-demand description fetching
 """
 
 import streamlit as st
@@ -9,6 +9,7 @@ import pandas as pd
 from datetime import datetime, date
 import os
 import requests
+from bs4 import BeautifulSoup
 
 # Page config
 st.set_page_config(
@@ -63,20 +64,6 @@ st.markdown("""
     .urgent-badge {
         background-color: #f8d7da;
         color: #721c24;
-    }
-    .link-button {
-        background-color: #1f77b4;
-        color: white;
-        padding: 0.5rem 1rem;
-        text-decoration: none;
-        border-radius: 5px;
-        display: inline-block;
-        margin-top: 0.5rem;
-    }
-    .link-button:hover {
-        background-color: #145a8c;
-        color: white;
-        text-decoration: none;
     }
     .stats-card {
         background-color: #ffffff;
@@ -141,6 +128,53 @@ def parse_date(date_str: str):
             continue
     
     return None
+
+
+def fetch_description(url: str) -> str:
+    """Fetch description from MERX opportunity page."""
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+        response = requests.get(url, headers=headers, timeout=15)
+        
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Try multiple selectors for description
+            selectors = [
+                'div.description',
+                'div.solicitation-description',
+                'div.opportunity-description',
+                'div[class*="description"]',
+                'div[class*="detail"]',
+                'section.description',
+                '.notice-description',
+                '#description',
+                'div.content',
+                'div.main-content'
+            ]
+            
+            for selector in selectors:
+                element = soup.select_one(selector)
+                if element:
+                    text = element.get_text(separator='\n', strip=True)
+                    if len(text) > 50:
+                        return text
+            
+            # Fallback: get all paragraphs
+            paragraphs = soup.find_all('p')
+            if paragraphs:
+                texts = [p.get_text(strip=True) for p in paragraphs if len(p.get_text(strip=True)) > 20]
+                if texts:
+                    return '\n\n'.join(texts[:5])
+        
+        return "Description not available on this page."
+        
+    except requests.Timeout:
+        return "⏱️ Request timed out. The page took too long to load."
+    except Exception as e:
+        return f"⚠️ Error loading description: {str(e)}"
 
 
 def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: int, min_date: str):
@@ -263,7 +297,6 @@ def main():
     )
     
     # Stats at top
-   # Stats at top
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -291,8 +324,10 @@ def main():
                 <div class="stats-label">With Links</div>
             </div>
         """, unsafe_allow_html=True)
-        
+    
+    # Add spacing
     st.markdown("<br>", unsafe_allow_html=True)
+    
     # Show date filter info
     if data:
         # Get the earliest published date from the data
@@ -303,7 +338,8 @@ def main():
             valid_dates = [d for d in parsed_dates if d is not None]
             if valid_dates:
                 min_date_in_data = min(valid_dates)
-                st.info(f"📅 Showing opportunities published from **{min_date_in_data.strftime('%b %d, %Y')}** onwards")    
+                st.info(f"📅 Showing opportunities published from **{min_date_in_data.strftime('%b %d, %Y')}** onwards (based on your selected filter)")
+    
     st.markdown("---")
     
     # Filter data
@@ -340,7 +376,7 @@ def main():
         else:
             st.subheader(f"Showing {len(filtered_data)} opportunities")
             
-            for opp in filtered_data:
+            for idx, opp in enumerate(filtered_data):
                 title = opp.get('title', 'No title')
                 org = opp.get('organization', 'Unknown organization')
                 published = opp.get('published_date', '')
@@ -362,9 +398,24 @@ def main():
                             {f'<span class="date-badge published-badge">📅 Published: {published}</span>' if published else ''}
                             {f'<span class="date-badge {"urgent-badge" if is_urgent else "closing-badge"}">⏰ Closes: {closing}</span>' if closing else ''}
                         </div>
-                        {f'<a href="{link}" target="_blank" class="link-button">🔗 View on MERX</a>' if link else ''}
                     </div>
                 """, unsafe_allow_html=True)
+                
+                # Add buttons below the card
+                col_a, col_b = st.columns(2)
+                with col_a:
+                    if link:
+                        st.link_button("🔗 View on MERX", link, use_container_width=True)
+                
+                with col_b:
+                    if link:
+                        if st.button("📄 View Details", key=f"detail_{idx}", use_container_width=True):
+                            with st.spinner("Fetching description..."):
+                                description = fetch_description(link)
+                                st.info("**Description:**")
+                                st.write(description)
+                
+                st.markdown("<br>", unsafe_allow_html=True)
     
     elif view_mode == "📊 Table":
         # Table View
@@ -429,5 +480,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
