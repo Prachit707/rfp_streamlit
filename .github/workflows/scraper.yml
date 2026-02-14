@@ -1,38 +1,24 @@
-name: MERX Scraper Test
-
-on:
-  workflow_dispatch:
-
 jobs:
   scrape:
     runs-on: ubuntu-latest
-
     steps:
-
-    - name: Checkout repo
-      uses: actions/checkout@v4
-
-
-    - name: Setup Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.10"
-
-
-    - name: Install Chrome
-      uses: browser-actions/setup-chrome@v1
-
-
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-
-
-    - name: Run scraper
-      run: python scraper.py
-
-
-    - name: Upload CSV
-      uses: actions/upload-artifact@v4
-      with:
-        name: merx-results
-        path: merx_test_results.csv
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          pip install selenium requests beautifulsoup4
+          # Install Chrome and ChromeDriver
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+      
+      - name: Run scraper
+        run: python scraper.py
+        env:
+          # Network access is available by default in GitHub Actions
