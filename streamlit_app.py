@@ -1,13 +1,14 @@
 """
 MERX Opportunities Dashboard
-Streamlit app to display scraped MERX data
+Streamlit app with workflow trigger capability
 """
 
 import streamlit as st
 import json
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, date
 import os
+import requests
 
 # Page config
 st.set_page_config(
@@ -93,6 +94,13 @@ st.markdown("""
         color: #666;
         font-size: 0.9rem;
     }
+    .trigger-section {
+        background-color: #e7f3ff;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 2px solid #1f77b4;
+        margin-bottom: 2rem;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -116,9 +124,9 @@ def parse_date(date_str: str):
     if not date_str:
         return None
     
-    # Common date formats
     formats = [
         '%Y-%m-%d',
+        '%Y/%m/%d',
         '%b %d, %Y',
         '%B %d, %Y',
         '%d/%m/%Y',
@@ -135,237 +143,288 @@ def parse_date(date_str: str):
     return None
 
 
+def trigger_workflow(github_token: str, repo: str, search_term: str, max_pages: int, min_date: str):
+    """Trigger GitHub Actions workflow."""
+    
+    url = f"https://api.github.com/repos/{repo}/actions/workflows/update_dashboard.yml/dispatches"
+    
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {github_token}",
+        "X-GitHub-Api-Version": "2022-11-28"
+    }
+    
+    data = {
+        "ref": "main",
+        "inputs": {
+            "search_term": search_term,
+            "max_pages": str(max_pages),
+            "min_published_date": min_date
+        }
+    }
+    
+    try:
+        response = requests.post(url, headers=headers, json=data)
+        return response.status_code == 204
+    except Exception as e:
+        st.error(f"Error triggering workflow: {e}")
+        return False
+
+
 def main():
     # Header
     st.markdown('<div class="main-header">📋 MERX Opportunities Dashboard</div>', unsafe_allow_html=True)
+    
+    # Workflow Trigger Section
+    st.markdown('<div class="trigger-section">', unsafe_allow_html=True)
+    st.markdown("### 🔄 Run New Scrape")
+    
+    col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
+    
+    with col1:
+        search_term = st.text_input("Search term", value="health", key="search")
+    
+    with col2:
+        max_pages = st.number_input("Max pages", min_value=1, max_value=10, value=5, key="pages")
+    
+    with col3:
+        min_date = st.date_input(
+            "Min published date",
+            value=date(2025, 12, 10),
+            key="date"
+        )
+    
+    with col4:
+        st.write("")  # Spacing
+        st.write("")  # Spacing
+        trigger_button = st.button("🚀 Run Scraper", type="primary", use_container_width=True)
+    
+    if trigger_button:
+        # Get secrets
+        try:
+            github_token = st.secrets["GITHUB_TOKEN"]
+            github_repo = st.secrets["GITHUB_REPO"]
+        except Exception as e:
+            st.error("⚠️ GitHub credentials not configured. Please add GITHUB_TOKEN and GITHUB_REPO to Streamlit secrets.")
+            st.stop()
+        
+        with st.spinner("Triggering workflow... This will take 2-3 minutes to complete."):
+            min_date_str = min_date.strftime('%Y-%m-%d')
+            success = trigger_workflow(github_token, github_repo, search_term, max_pages, min_date_str)
+            
+            if success:
+                st.success(f"✅ Workflow triggered successfully! Scraping with date >= {min_date_str}")
+                st.info("⏳ The scraper is running now. Refresh this page in 2-3 minutes to see new results.")
+            else:
+                st.error("❌ Failed to trigger workflow. Check your GitHub token and permissions.")
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
     st.markdown("---")
     
     # Load data
     data = load_data()
     
     if not data:
-        st.warning("⚠️ No data available. Please run the scraper first to collect opportunities.")
-        st.info("Upload your `merx_results.json` file using the sidebar, or place it in the app directory.")
-        
-        # File uploader
-        uploaded_file = st.file_uploader("Upload MERX Results JSON", type=['json'])
-        if uploaded_file:
-            data = json.load(uploaded_file)
-            st.success(f"✅ Loaded {len(data)} opportunities!")
+        st.warning("⚠️ No data available. Run the scraper above to collect opportunities.")
+        st.stop()
     
-    if data:
-        # Convert to DataFrame
-        df = pd.DataFrame(data)
+    # Convert to DataFrame
+    df = pd.DataFrame(data)
+    
+    # Sidebar filters
+    st.sidebar.header("🔍 Filters")
+    
+    # Search
+    search_query = st.sidebar.text_input("Search opportunities", "")
+    
+    # Organization filter
+    organizations = sorted(df['organization'].unique())
+    selected_orgs = st.sidebar.multiselect(
+        "Filter by Organization",
+        organizations,
+        default=[]
+    )
+    
+    # Stats at top
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.markdown(f"""
+            <div class="stats-card">
+                <div class="stats-number">{len(data)}</div>
+                <div class="stats-label">Total Opportunities</div>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        unique_orgs = len(df['organization'].unique())
+        st.markdown(f"""
+            <div class="stats-card">
+                <div class="stats-number">{unique_orgs}</div>
+                <div class="stats-label">Organizations</div>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        with_links = len([d for d in data if d.get('link')])
+        st.markdown(f"""
+            <div class="stats-card">
+                <div class="stats-number">{with_links}</div>
+                <div class="stats-label">With Links</div>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    with col4:
+        if data:
+            last_scraped = data[0].get('scraped_at', 'Unknown')
+            try:
+                last_date = datetime.fromisoformat(last_scraped).strftime('%b %d, %Y')
+            except:
+                last_date = last_scraped[:10] if last_scraped else 'Unknown'
+        else:
+            last_date = 'Unknown'
         
-        # Sidebar filters
-        st.sidebar.header("🔍 Filters")
+        st.markdown(f"""
+            <div class="stats-card">
+                <div class="stats-label">Last Updated</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: #666;">{last_date}</div>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("---")
+    
+    # Filter data
+    filtered_data = data.copy()
+    
+    # Apply search filter
+    if search_query:
+        filtered_data = [
+            d for d in filtered_data
+            if search_query.lower() in d.get('title', '').lower()
+            or search_query.lower() in d.get('organization', '').lower()
+        ]
+    
+    # Apply organization filter
+    if selected_orgs:
+        filtered_data = [
+            d for d in filtered_data
+            if d.get('organization') in selected_orgs
+        ]
+    
+    # Display view selector
+    view_mode = st.radio(
+        "View Mode",
+        ["📋 Cards", "📊 Table", "📈 Analytics"],
+        horizontal=True
+    )
+    
+    st.markdown("---")
+    
+    if view_mode == "📋 Cards":
+        # Card View
+        if not filtered_data:
+            st.warning("No opportunities match your filters.")
+        else:
+            st.subheader(f"Showing {len(filtered_data)} opportunities")
+            
+            for opp in filtered_data:
+                title = opp.get('title', 'No title')
+                org = opp.get('organization', 'Unknown organization')
+                published = opp.get('published_date', '')
+                closing = opp.get('closing_date', '')
+                link = opp.get('link', '')
+                
+                # Check if closing soon
+                closing_date = parse_date(closing)
+                is_urgent = False
+                if closing_date:
+                    days_until_close = (closing_date - datetime.now()).days
+                    is_urgent = days_until_close <= 7
+                
+                st.markdown(f"""
+                    <div class="opportunity-card">
+                        <div class="opportunity-title">{title}</div>
+                        <div class="opportunity-org">🏢 {org}</div>
+                        <div style="margin: 0.8rem 0;">
+                            {f'<span class="date-badge published-badge">📅 Published: {published}</span>' if published else ''}
+                            {f'<span class="date-badge {"urgent-badge" if is_urgent else "closing-badge"}">⏰ Closes: {closing}</span>' if closing else ''}
+                        </div>
+                        {f'<a href="{link}" target="_blank" class="link-button">🔗 View on MERX</a>' if link else ''}
+                    </div>
+                """, unsafe_allow_html=True)
+    
+    elif view_mode == "📊 Table":
+        # Table View
+        if not filtered_data:
+            st.warning("No opportunities match your filters.")
+        else:
+            st.subheader(f"Showing {len(filtered_data)} opportunities")
+            
+            table_df = pd.DataFrame(filtered_data)
+            display_columns = ['title', 'organization', 'published_date', 'closing_date', 'link']
+            available_columns = [col for col in display_columns if col in table_df.columns]
+            
+            column_names = {
+                'title': 'Title',
+                'organization': 'Organization',
+                'published_date': 'Published',
+                'closing_date': 'Closes',
+                'link': 'Link'
+            }
+            
+            display_df = table_df[available_columns].copy()
+            display_df.columns = [column_names.get(col, col) for col in available_columns]
+            
+            if 'Link' in display_df.columns:
+                display_df['Link'] = display_df['Link'].apply(
+                    lambda x: f'<a href="{x}" target="_blank">View</a>' if x else ''
+                )
+            
+            st.write(display_df.to_html(escape=False, index=False), unsafe_allow_html=True)
+            
+            csv = table_df[available_columns].to_csv(index=False)
+            st.download_button(
+                label="📥 Download as CSV",
+                data=csv,
+                file_name=f"merx_opportunities_{datetime.now().strftime('%Y%m%d')}.csv",
+                mime="text/csv"
+            )
+    
+    else:  # Analytics View
+        st.subheader("📈 Analytics")
         
-        # Search
-        search_query = st.sidebar.text_input("Search opportunities", "")
-        
-        # Organization filter
-        organizations = sorted(df['organization'].unique())
-        selected_orgs = st.sidebar.multiselect(
-            "Filter by Organization",
-            organizations,
-            default=[]
-        )
-        
-        # Date range filter
-        st.sidebar.subheader("Date Filters")
-        filter_by_closing = st.sidebar.checkbox("Filter by closing date", value=False)
-        
-        # Stats at top
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown(f"""
-                <div class="stats-card">
-                    <div class="stats-number">{len(data)}</div>
-                    <div class="stats-label">Total Opportunities</div>
-                </div>
-            """, unsafe_allow_html=True)
+            st.markdown("#### Opportunities by Organization")
+            org_counts = df['organization'].value_counts().head(10)
+            st.bar_chart(org_counts)
         
         with col2:
-            unique_orgs = len(df['organization'].unique())
-            st.markdown(f"""
-                <div class="stats-card">
-                    <div class="stats-number">{unique_orgs}</div>
-                    <div class="stats-label">Organizations</div>
-                </div>
-            """, unsafe_allow_html=True)
+            st.markdown("#### Opportunities by Page")
+            if 'page' in df.columns:
+                page_counts = df['page'].value_counts().sort_index()
+                st.bar_chart(page_counts)
         
-        with col3:
-            with_links = len([d for d in data if d.get('link')])
-            st.markdown(f"""
-                <div class="stats-card">
-                    <div class="stats-number">{with_links}</div>
-                    <div class="stats-label">With Links</div>
-                </div>
-            """, unsafe_allow_html=True)
+        st.markdown("#### Closing Dates Distribution")
+        if 'closing_date' in df.columns:
+            closing_dates = df['closing_date'].value_counts().head(15)
+            st.bar_chart(closing_dates)
         
-        with col4:
-            # Last updated
-            if data:
-                last_scraped = data[0].get('scraped_at', 'Unknown')
-                try:
-                    last_date = datetime.fromisoformat(last_scraped).strftime('%b %d, %Y')
-                except:
-                    last_date = last_scraped[:10] if last_scraped else 'Unknown'
-            else:
-                last_date = 'Unknown'
-            
-            st.markdown(f"""
-                <div class="stats-card">
-                    <div class="stats-label">Last Updated</div>
-                    <div style="font-size: 1.1rem; font-weight: bold; color: #666;">{last_date}</div>
-                </div>
-            """, unsafe_allow_html=True)
-        
-        st.markdown("---")
-        
-        # Filter data
-        filtered_data = data.copy()
-        
-        # Apply search filter
-        if search_query:
-            filtered_data = [
-                d for d in filtered_data
-                if search_query.lower() in d.get('title', '').lower()
-                or search_query.lower() in d.get('organization', '').lower()
-            ]
-        
-        # Apply organization filter
-        if selected_orgs:
-            filtered_data = [
-                d for d in filtered_data
-                if d.get('organization') in selected_orgs
-            ]
-        
-        # Display view selector
-        view_mode = st.radio(
-            "View Mode",
-            ["📋 Cards", "📊 Table", "📈 Analytics"],
-            horizontal=True
-        )
-        
-        st.markdown("---")
-        
-        if view_mode == "📋 Cards":
-            # Card View
-            if not filtered_data:
-                st.warning("No opportunities match your filters.")
-            else:
-                st.subheader(f"Showing {len(filtered_data)} opportunities")
-                
-                for opp in filtered_data:
-                    title = opp.get('title', 'No title')
-                    org = opp.get('organization', 'Unknown organization')
-                    published = opp.get('published_date', '')
-                    closing = opp.get('closing_date', '')
-                    link = opp.get('link', '')
-                    
-                    # Check if closing soon (if we can parse the date)
-                    closing_date = parse_date(closing)
-                    is_urgent = False
-                    if closing_date:
-                        days_until_close = (closing_date - datetime.now()).days
-                        is_urgent = days_until_close <= 7
-                    
-                    st.markdown(f"""
-                        <div class="opportunity-card">
-                            <div class="opportunity-title">{title}</div>
-                            <div class="opportunity-org">🏢 {org}</div>
-                            <div style="margin: 0.8rem 0;">
-                                {f'<span class="date-badge published-badge">📅 Published: {published}</span>' if published else ''}
-                                {f'<span class="date-badge {"urgent-badge" if is_urgent else "closing-badge"}">⏰ Closes: {closing}</span>' if closing else ''}
-                            </div>
-                            {f'<a href="{link}" target="_blank" class="link-button">🔗 View on MERX</a>' if link else ''}
-                        </div>
-                    """, unsafe_allow_html=True)
-        
-        elif view_mode == "📊 Table":
-            # Table View
-            if not filtered_data:
-                st.warning("No opportunities match your filters.")
-            else:
-                st.subheader(f"Showing {len(filtered_data)} opportunities")
-                
-                # Create DataFrame for table view
-                table_df = pd.DataFrame(filtered_data)
-                
-                # Select and reorder columns
-                display_columns = ['title', 'organization', 'published_date', 'closing_date', 'link']
-                available_columns = [col for col in display_columns if col in table_df.columns]
-                
-                # Rename columns for display
-                column_names = {
-                    'title': 'Title',
-                    'organization': 'Organization',
-                    'published_date': 'Published',
-                    'closing_date': 'Closes',
-                    'link': 'Link'
-                }
-                
-                display_df = table_df[available_columns].copy()
-                display_df.columns = [column_names.get(col, col) for col in available_columns]
-                
-                # Make links clickable
-                if 'Link' in display_df.columns:
-                    display_df['Link'] = display_df['Link'].apply(
-                        lambda x: f'<a href="{x}" target="_blank">View</a>' if x else ''
-                    )
-                
-                st.write(display_df.to_html(escape=False, index=False), unsafe_allow_html=True)
-                
-                # Download button
-                csv = table_df[available_columns].to_csv(index=False)
-                st.download_button(
-                    label="📥 Download as CSV",
-                    data=csv,
-                    file_name=f"merx_opportunities_{datetime.now().strftime('%Y%m%d')}.csv",
-                    mime="text/csv"
-                )
-        
-        else:  # Analytics View
-            st.subheader("📈 Analytics")
-            
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                st.markdown("#### Opportunities by Organization")
-                org_counts = df['organization'].value_counts().head(10)
-                st.bar_chart(org_counts)
-            
-            with col2:
-                st.markdown("#### Opportunities by Page")
-                if 'page' in df.columns:
-                    page_counts = df['page'].value_counts().sort_index()
-                    st.bar_chart(page_counts)
-            
-            # Date distribution
-            st.markdown("#### Closing Dates Distribution")
-            if 'closing_date' in df.columns:
-                closing_dates = df['closing_date'].value_counts().head(15)
-                st.bar_chart(closing_dates)
-            
-            # Top organizations table
-            st.markdown("#### Top 10 Organizations")
-            top_orgs = df['organization'].value_counts().head(10).reset_index()
-            top_orgs.columns = ['Organization', 'Count']
-            st.dataframe(top_orgs, use_container_width=True)
+        st.markdown("#### Top 10 Organizations")
+        top_orgs = df['organization'].value_counts().head(10).reset_index()
+        top_orgs.columns = ['Organization', 'Count']
+        st.dataframe(top_orgs, use_container_width=True)
     
     # Footer
     st.markdown("---")
     st.markdown("""
         <div style="text-align: center; color: #666; font-size: 0.9rem;">
             Data scraped from <a href="https://www.merx.com/public/solicitations/open" target="_blank">MERX</a> | 
-            Last updated: {last_update} | 
             Built with Streamlit
         </div>
-    """.format(
-        last_update=datetime.now().strftime('%B %d, %Y')
-    ), unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
