@@ -250,7 +250,8 @@ def main():
     )
     
     # Stats at top
-    col1, col2, col3, col4 = st.columns(4)
+   # Stats at top
+    col1, col2, col3 = st.columns(3)
     
     with col1:
         st.markdown(f"""
@@ -278,23 +279,17 @@ def main():
             </div>
         """, unsafe_allow_html=True)
     
-    with col4:
-        if data:
-            last_scraped = data[0].get('scraped_at', 'Unknown')
-            try:
-                last_date = datetime.fromisoformat(last_scraped).strftime('%b %d, %Y')
-            except:
-                last_date = last_scraped[:10] if last_scraped else 'Unknown'
-        else:
-            last_date = 'Unknown'
-        
-        st.markdown(f"""
-            <div class="stats-card">
-                <div class="stats-label">Last Updated</div>
-                <div style="font-size: 1.1rem; font-weight: bold; color: #666;">{last_date}</div>
-            </div>
-        """, unsafe_allow_html=True)
-    
+    # Show date filter info
+    if data:
+        # Get the earliest published date from the data
+        published_dates = [d.get('published_date', '') for d in data if d.get('published_date')]
+        if published_dates:
+            # Try to find the minimum date
+            parsed_dates = [parse_date(d) for d in published_dates]
+            valid_dates = [d for d in parsed_dates if d is not None]
+            if valid_dates:
+                min_date_in_data = min(valid_dates)
+                st.info(f"📅 Showing opportunities published from **{min_date_in_data.strftime('%b %d, %Y')}** onwards")    
     st.markdown("---")
     
     # Filter data
@@ -420,3 +415,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
