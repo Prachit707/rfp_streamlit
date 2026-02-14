@@ -1,6 +1,6 @@
 """
-MERX Scraper - Updated with Correct URL
-Uses: https://www.merx.com/public/solicitations/open
+MERX Scraper - Enhanced Version
+Extracts: Title, Organization, Published Date, Closing Date, and Link
 """
 
 import time
@@ -38,7 +38,6 @@ class MERXScraper:
         self.debug = debug
         self.driver = None
         self.wait = None
-        # UPDATED URL - solicitations instead of opportunities
         self.base_url = "https://www.merx.com/public/solicitations/open"
         
     def _setup_driver(self):
@@ -184,6 +183,34 @@ class MERXScraper:
             logger.error(f"Error during search: {e}")
             return False
     
+    def _extract_link_from_row(self, row) -> Optional[str]:
+        """
+        Extract the opportunity link from a row.
+        
+        Args:
+            row: WebElement representing a table row
+            
+        Returns:
+            Full URL to the opportunity, or None if not found
+        """
+        try:
+            # Try to find a link in the row
+            links = row.find_elements(By.TAG_NAME, "a")
+            
+            for link in links:
+                href = link.get_attribute('href')
+                if href and ('view-notice' in href or 'solicitation' in href):
+                    return href
+            
+            # If no specific link found, return first link
+            if links:
+                return links[0].get_attribute('href')
+                
+        except Exception as e:
+            logger.debug(f"Error extracting link: {e}")
+        
+        return None
+    
     def _scrape_page(self, page_num: int) -> List[Dict]:
         """
         Scrape solicitations from the current page.
@@ -225,35 +252,73 @@ class MERXScraper:
                 if not row_text:
                     continue
                 
+                # Extract link
+                link = self._extract_link_from_row(row)
+                
                 # Try to find columns (td elements)
                 cols = row.find_elements(By.TAG_NAME, "td")
                 
                 if cols and len(cols) >= 3:
                     # Structured table format
+                    # Typical MERX structure:
+                    # Col 0: Title
+                    # Col 1: Organization
+                    # Col 2: Published Date
+                    # Col 3: Closing Date
+                    
                     title = cols[0].text.strip() if len(cols) > 0 else ""
                     organization = cols[1].text.strip() if len(cols) > 1 else ""
-                    closing_date = cols[-1].text.strip()  # Usually last column
+                    
+                    # Try to find both dates
+                    if len(cols) >= 4:
+                        published_date = cols[2].text.strip()
+                        closing_date = cols[3].text.strip()
+                    elif len(cols) == 3:
+                        # If only 3 columns, assume no published date
+                        published_date = ""
+                        closing_date = cols[2].text.strip()
+                    else:
+                        published_date = ""
+                        closing_date = cols[-1].text.strip()
                     
                 else:
                     # Fallback: parse from row text
                     lines = [line.strip() for line in row_text.split('\n') if line.strip()]
                     title = lines[0] if len(lines) > 0 else row_text[:100]
                     organization = lines[1] if len(lines) > 1 else ""
-                    closing_date = lines[-1] if len(lines) > 2 else ""
+                    
+                    # Try to find dates in the lines
+                    published_date = ""
+                    closing_date = ""
+                    
+                    for line in lines:
+                        # Look for date patterns (YYYY-MM-DD or DD/MM/YYYY or similar)
+                        if any(char.isdigit() for char in line):
+                            if not published_date and len(line) < 30:
+                                published_date = line
+                            elif not closing_date and len(line) < 30:
+                                closing_date = line
                 
                 # Only add if we have actual data
                 if title and len(title) > 5:  # Ignore very short/empty titles
                     result = {
                         "title": title,
                         "organization": organization,
+                        "published_date": published_date,
                         "closing_date": closing_date,
+                        "link": link or "",
                         "page": page_num,
                         "scraped_at": datetime.now().isoformat()
                     }
                     results.append(result)
                     
                     if self.debug and idx < 5:  # Log first 5 for debugging
-                        logger.debug(f"  Row {idx}: {title[:50]}...")
+                        logger.debug(f"  Row {idx}:")
+                        logger.debug(f"    Title: {title[:50]}...")
+                        logger.debug(f"    Org: {organization[:40]}")
+                        logger.debug(f"    Published: {published_date}")
+                        logger.debug(f"    Closes: {closing_date}")
+                        logger.debug(f"    Link: {link}")
                         
             except Exception as e:
                 logger.debug(f"Error parsing row {idx}: {e}")
@@ -384,7 +449,7 @@ class MERXScraper:
 def main():
     """Main entry point."""
     print("="*70)
-    print("MERX Solicitations Scraper")
+    print("MERX Solicitations Scraper - Enhanced Version")
     print("URL: https://www.merx.com/public/solicitations/open")
     print("="*70)
     print()
@@ -407,16 +472,21 @@ def main():
     print("="*70 + "\n")
     
     for i, sol in enumerate(results, 1):
-        print(f"{i}. {sol['title'][:80]}")
-        print(f"   Organization: {sol['organization'][:60]}")
+        print(f"{i}. {sol['title'][:70]}")
+        print(f"   Organization: {sol['organization'][:50]}")
+        print(f"   Published: {sol['published_date']}")
         print(f"   Closes: {sol['closing_date']}")
-        print(f"   Page: {sol['page']}")
+        print(f"   Link: {sol['link']}")
         print()
     
     # Save results
     if results:
         scraper.save_results(results)
         print(f"\n✓ Full results saved to /tmp/merx_results.json")
+        
+        # Show sample JSON structure
+        print("\nSample JSON structure:")
+        print(json.dumps(results[0] if results else {}, indent=2))
     else:
         print("\n⚠ No results to save")
         print("\nPossible reasons:")
