@@ -1,12 +1,11 @@
-name: MERX Scraper
+name: Update MERX Dashboard
 
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
+  # Run manually
   workflow_dispatch:
     inputs:
       search_term:
-        description: 'Search term for MERX opportunities'
+        description: 'Search term for MERX solicitations'
         required: false
         default: 'health'
       max_pages:
@@ -14,12 +13,12 @@ on:
         required: false
         default: '3'
   
-  # Optionally run on a schedule (uncomment to enable)
-  # schedule:
-  #   - cron: '0 9 * * 1'  # Runs every Monday at 9 AM UTC
+  # Run on schedule (daily at 9 AM UTC)
+  schedule:
+    - cron: '0 9 * * *'
 
 jobs:
-  scrape:
+  scrape-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -37,37 +36,61 @@ jobs:
           sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
+          google-chrome --version
       
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
-          pip install selenium requests beautifulsoup4
+          pip install selenium
       
       - name: Run scraper
         run: |
+          echo "Scraping MERX..."
           python scraper.py
         env:
           SEARCH_TERM: ${{ github.event.inputs.search_term || 'health' }}
           MAX_PAGES: ${{ github.event.inputs.max_pages || '3' }}
       
-      - name: Upload results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: scraper-results
-          path: |
-            /tmp/merx_results.json
-            /tmp/merx_*.png
-            /tmp/merx_*.html
-          retention-days: 7
-      
-      - name: Display summary
-        if: always()
+      - name: Copy results to app directory
         run: |
           if [ -f /tmp/merx_results.json ]; then
-            echo "✓ Scraping completed successfully!"
-            echo "Results:"
-            cat /tmp/merx_results.json | python -m json.tool | head -50
+            cp /tmp/merx_results.json merx_results.json
+            echo "✓ Results copied"
+            
+            # Show preview
+            echo "Preview of results:"
+            head -20 merx_results.json
           else
             echo "⚠ No results file found"
+            exit 1
           fi
+      
+      - name: Commit and push results
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add merx_results.json
+          
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update MERX data - $(date +'%Y-%m-%d %H:%M:%S')"
+            git push
+            echo "✓ Data updated and pushed"
+          fi
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "=========================================="
+          echo "MERX Dashboard Update Complete"
+          echo "=========================================="
+          if [ -f merx_results.json ]; then
+            RESULT_COUNT=$(cat merx_results.json | python -c "import sys, json; print(len(json.load(sys.stdin)))" 2>/dev/null || echo "0")
+            echo "Total opportunities: $RESULT_COUNT"
+            echo "Dashboard will update automatically"
+          else
+            echo "⚠ No results generated"
+          fi
+          echo "=========================================="
