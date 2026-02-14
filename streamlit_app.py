@@ -187,9 +187,22 @@ def main():
     col1, col2 = st.columns([3, 1])
     
     with col1:
+        # Get the date from the data if available, otherwise use default
+        default_date = date(2025, 12, 10)
+        
+        # Try to get date from existing data
+        data_check = load_data()
+        if data_check:
+            published_dates = [d.get('published_date', '') for d in data_check if d.get('published_date')]
+            if published_dates:
+                parsed_dates = [parse_date(d) for d in published_dates]
+                valid_dates = [d for d in parsed_dates if d is not None]
+                if valid_dates:
+                    default_date = min(valid_dates).date()
+        
         min_date = st.date_input(
             "📅 Select minimum published date (opportunities published on or after this date will be collected)",
-            value=date(2025, 12, 10),
+            value=default_date,
             key="date"
         )
     
@@ -278,7 +291,8 @@ def main():
                 <div class="stats-label">With Links</div>
             </div>
         """, unsafe_allow_html=True)
-    
+        
+    st.markdown("<br>", unsafe_allow_html=True)
     # Show date filter info
     if data:
         # Get the earliest published date from the data
@@ -415,4 +429,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
