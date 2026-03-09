@@ -1,138 +1,12 @@
 [
   {
-    "title": "Sexual Health Training Project",
-    "organization": "Children and Family Services",
-    "published_date": "2026/02/11",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443874111496?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:11.805085"
-  },
-  {
-    "title": "Group Health Benefits Carrier",
-    "organization": "First Nations Health Authority",
-    "published_date": "2026/03/04",
-    "closing_date": "2026/03/17",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443906399342?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:11.833231"
-  },
-  {
-    "title": "Range Health Assessment for MLPP",
-    "organization": "Parks, Culture and Sport",
-    "published_date": "2026/02/11",
-    "closing_date": "2026/03/10",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443874826006?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:11.858972"
-  },
-  {
-    "title": "Health Care Professionals (B)",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/03/16",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998436?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:11.885384"
-  },
-  {
-    "title": "Health System Advisory Services",
-    "organization": "Alberta Public Sector",
-    "published_date": "2023/10/03",
-    "closing_date": "2026/10/02",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/42883579207?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:11.912643"
-  },
-  {
-    "title": "Health Facility Accreditation Enterprise Software",
-    "organization": "College of Physicians and Surgeons of Alberta",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/03/20",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443899502640?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:11.937696"
-  },
-  {
-    "title": "Health Shared Services Provincial Health Corporation Request for Proposals for Component Content Management, Provincial Solution",
-    "organization": "Health Shared Services Provincial Health Corporation",
-    "published_date": "2026/02/18",
-    "closing_date": "2026/03/26",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443884556873?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:11.963139"
-  },
-  {
-    "title": "Neepawa Health Centre - Window Coverings Tender",
-    "organization": "Department Led Capital Projects Office",
-    "published_date": "2026/02/03",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/solicitations/open-bids/Neepawa-Health-Centre-Window-Coverings-Tender/0000313420?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:11.988367"
-  },
-  {
     "title": "Mobile MRI Rental trailer for Fraser Health",
     "organization": "Provincial Health Services Authority BC",
     "published_date": "2026/03/06",
     "closing_date": "2026/03/16",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443910140515?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.013432"
-  },
-  {
-    "title": "Plant and Animal Health Centre Replacement Project",
-    "organization": "Infrastructure BC Inc.",
-    "published_date": "2026/02/18",
-    "closing_date": "2026/04/13",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443884749774?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.039221"
-  },
-  {
-    "title": "Saskatchewan Health Authority - Continuing Care Services",
-    "organization": "Saskatchewan Health Authority",
-    "published_date": "2026/01/23",
-    "closing_date": "2026/05/22",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443841743427?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.066104"
-  },
-  {
-    "title": "Parking Lot/Roadway/Parkade Cleaning and Line Painting Services for Various sites in Edmonton Zone",
-    "organization": "Health Shared Services Provincial Health Corporation",
-    "published_date": "2026/02/11",
-    "closing_date": "2026/03/11",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443873997033?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.091625"
-  },
-  {
-    "title": "Comprehensive Cleaning and Maintenance of Catch Basins, Grease Traps, Lift Stations, Sewer Lines, and Drainage Systems",
-    "organization": "Health Shared Services Provincial Health Corporation",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/03/25",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443899502639?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.117092"
-  },
-  {
-    "title": "Computer Assisted Coding Solution",
-    "organization": "Health Shared Services Provincial Health Corporation",
-    "published_date": "2026/02/20",
-    "closing_date": "2026/03/26",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443887678032?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.142341"
-  },
-  {
-    "title": "Window and High-Altitude Cleaning CapitalCare Sites Edmonton Zone",
-    "organization": "Health Shared Services Provincial Health Corporation",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/04/07",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443899729413?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.167932"
+    "scraped_at": "2026-03-09T13:50:41.178031"
   },
   {
     "title": "Cardiac Monitors/Defibrillators, related Accessories, Consumables, and Services.",
@@ -141,205 +15,7 @@
     "closing_date": "2026/04/02",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443910253698?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.192675"
-  },
-  {
-    "title": "Summary of RFI Electronic Traveller Health Informationtion (eTHI)",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2023/12/14",
-    "closing_date": "2100/12/14",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784942607?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.232832"
-  },
-  {
-    "title": "HT103-253663 - Health Canada Document scanning service",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2026/02/25",
-    "closing_date": "2026/03/25",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998234?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.257956"
-  },
-  {
-    "title": "Provincial Water Treatment Program for the Nova Scotia Health Authority",
-    "organization": "Nova Scotia Health Authority",
-    "published_date": "2026/02/23",
-    "closing_date": "2026/04/02",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443891922858?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.282888"
-  },
-  {
-    "title": "Interior Signage Health Science Center Emergency Department Redevelopment",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/03/19",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/Interior-Signage-Health-Science-Center-Emergency-Department-Redevelopment/0000315765?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.307511"
-  },
-  {
-    "title": "Kivalliq Health Centre - Lifecycle Upgrades Rankin Inlet, NU",
-    "organization": "Government of Nunavut",
-    "published_date": "2026/02/11",
-    "closing_date": "2026/03/18",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443874826015?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.332995"
-  },
-  {
-    "title": "Leased Residential Housing for Newfoundland and Labrador Health Services (NLHS)",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/Leased-Residential-Housing-for-Newfoundland-and-Labrador-Health-Services-NLHS/0000315704?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.357882"
-  },
-  {
-    "title": "Provision of Building Security Services for Health Facilities Iqaluit, NU",
-    "organization": "Government of Nunavut",
-    "published_date": "2026/02/18",
-    "closing_date": "2026/03/13",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443884178003?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.382736"
-  },
-  {
-    "title": "Project Management Services for the Saskatoon Health Infrastructure Renovation and Expansion Project",
-    "organization": "SaskBuilds and Procurement - Asset Management",
-    "published_date": "2026/03/03",
-    "closing_date": "2026/03/16",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443905119855?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.407301"
-  },
-  {
-    "title": "Responsive risk assessment tool for drug criticality and vulnerability for Health Canada",
-    "organization": "Department of Health (HC)",
-    "published_date": "2026/02/24",
-    "closing_date": "2026/03/09",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998085?origin=0",
-    "page": 1,
-    "scraped_at": "2026-03-09T09:41:12.433383"
-  },
-  {
-    "title": "Standing Offer for Health Systems Consulting Services Contingent Labour for NSHA",
-    "organization": "Nova Scotia Health Authority",
-    "published_date": "2026/01/02",
-    "closing_date": "2027/11/30",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443814384884?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.077009"
-  },
-  {
-    "title": "Project: tender_21473 - Leadership Certificate in Psychological Health and Safety",
-    "organization": "Ontario Shared Services",
-    "published_date": "2026/01/28",
-    "closing_date": "2026/03/17",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443849184880?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.102482"
-  },
-  {
-    "title": "Provincial Fire Life Safety – Birch Lodge and Hamiota Health Centre",
-    "organization": "SMS Engineering Ltd",
-    "published_date": "2026/02/10",
-    "closing_date": "2026/03/19",
-    "link": "https://www.merx.com/mbgov/solicitations/open-bids/Provincial-Fire-Life-Safety-Birch-Lodge-and-Hamiota-Health-Centre/0000314011?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.128272"
-  },
-  {
-    "title": "RFP - Mental Health and Addiction Service-Based Peer Support Services",
-    "organization": "Nova Scotia Health Authority",
-    "published_date": "2026/02/23",
-    "closing_date": "2026/03/20",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443891922859?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.152819"
-  },
-  {
-    "title": "Wawanesa Health Centre & Personal Care Home Nurse Call System Replacement",
-    "organization": "MCW Group of Companies",
-    "published_date": "2026/01/27",
-    "closing_date": "2026/03/09",
-    "link": "https://www.merx.com/mbgov/solicitations/open-bids/Wawanesa-Health-Centre-Personal-Care-Home-Nurse-Call-System-Replacement/0000312767?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.178874"
-  },
-  {
-    "title": "Development of Integrated Statistical Databases, Statistical Models, and Scientific Manuscripts Investigating the Relationship Between Ambient Air Pollution and COVID-19 Across Three Phases: Pre-Pandemic",
-    "organization": "Department of Health (HC)",
-    "published_date": "2026/02/12",
-    "closing_date": "2026/03/09",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784996983?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.203582"
-  },
-  {
-    "title": "Improved Air Health Trends Indicator (AHTI) accounting for non-linear exposure-response association and changing climate",
-    "organization": "Department of Health (HC)",
-    "published_date": "2026/03/02",
-    "closing_date": "2026/03/11",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998596?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.228591"
-  },
-  {
-    "title": "Standing Offer for Travel Nurse Contingent Labour for NSHA",
-    "organization": "Nova Scotia Health Authority",
-    "published_date": "2024/03/25",
-    "closing_date": "2027/11/30",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/43073372025?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.253592"
-  },
-  {
-    "title": "Primary and Preventative Health Services - Request for Information: RFI - 25-2059 - Digital Patient Navigator",
-    "organization": "Primary and Preventative Health Services",
-    "published_date": "2026/03/03",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443904582539?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.278904"
-  },
-  {
-    "title": "Measurement of Micronucleus Incidence",
-    "organization": "Department of Health (HC)",
-    "published_date": "2026/02/11",
-    "closing_date": "2026/03/09",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784996899?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.303700"
-  },
-  {
-    "title": "Provide Air Quality Health Index (AQHI) updates by expanding temporal and spatial coverage in rural areas",
-    "organization": "Department of Health (HC)",
-    "published_date": "2026/02/25",
-    "closing_date": "2026/03/06",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998151?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.328376"
-  },
-  {
-    "title": "RFSQ OPOR PROJECT RESOURCES ONBOARDING",
-    "organization": "Nova Scotia Health Authority",
-    "published_date": "2025/02/12",
-    "closing_date": "2029/06/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443408084653?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.352692"
-  },
-  {
-    "title": "RFC - NSHA - Cape Breton Regional Hospital Air Handling Unit #4 Replacement",
-    "organization": "Nova Scotia Health Authority",
-    "published_date": "2026/02/18",
-    "closing_date": "2026/03/20",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443884460361?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.377166"
+    "scraped_at": "2026-03-09T13:50:41.351607"
   },
   {
     "title": "DRAFT RFP - Centralized Navigation-811 Managed Service and Centralized Scheduling Solution DHW",
@@ -348,61 +24,7 @@
     "closing_date": "2026/03/13",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443908595472?origin=0",
     "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.401946"
-  },
-  {
-    "title": "Third-Party Delivery of Long-Term Care",
-    "organization": "Health",
-    "published_date": "2026/01/20",
-    "closing_date": "2026/05/19",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443836861770?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.438113"
-  },
-  {
-    "title": "Notice of Proposed Procurement for a Centralized Navigation-811 Service with a Centralized Scheduling Technical Solution for the Department of Health and Wellness",
-    "organization": "Department of Health and Wellness",
-    "published_date": "2026/01/14",
-    "closing_date": "2026/03/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443828972827?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.463585"
-  },
-  {
-    "title": "RFC - NSHA - Cape Breton Regional Hospital Kitchen Hoods Replacement",
-    "organization": "Nova Scotia Health Authority",
-    "published_date": "2026/02/18",
-    "closing_date": "2026/03/20",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443884460363?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.488639"
-  },
-  {
-    "title": "RFP #202602 – Provision of Facilities Management & Operations and HVAC Services",
-    "organization": "Kensington Health",
-    "published_date": "2026/02/23",
-    "closing_date": "2026/04/07",
-    "link": "https://www.merx.com/solicitations/open-bids/RFP-202602-Provision-of-Facilities-Management-Operations-and-HVAC-Services/0000315342?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.514310"
-  },
-  {
-    "title": "Electronic Health Record Platform (EHRP)-Invitation to Qualify (ITQ) Results Notification",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2025/09/08",
-    "closing_date": "2027/12/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784983549?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.539527"
-  },
-  {
-    "title": "Project: tender_21542 - Mental Health and Addictions Redevelopment Project – Adult Inpatient Unit",
-    "organization": "Ontario Shared Services",
-    "published_date": "2026/02/19",
-    "closing_date": "2026/03/19",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443886241023?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.564518"
+    "scraped_at": "2026-03-09T13:50:53.369804"
   },
   {
     "title": "PHC-NOI-15270 Thrive Health Software-as-a-Service, Patient Survey System",
@@ -411,115 +33,7 @@
     "closing_date": "2026/03/16",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443908079509?origin=0",
     "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.589820"
-  },
-  {
-    "title": "Health Facility Planning Consulting Master Program/Master Plan – Prince County Hospital, Western Hospital and Community Hospital O’Leary",
-    "organization": "Gov of PEI - Health PEI",
-    "published_date": "2024/04/10",
-    "closing_date": "2024/05/07",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784951391?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.614784"
-  },
-  {
-    "title": "Request for Evidence of Competition (REC) for an Online Learning Platform",
-    "organization": "Shared Health Inc.",
-    "published_date": "2026/03/03",
-    "closing_date": "2026/03/17",
-    "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Evidence-of-Competition-REC-for-an-Online-Learning-Platform/0000315943?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.639739"
-  },
-  {
-    "title": "Turnkey Leased Clinical Space",
-    "organization": "I.W.K. Health Centre",
-    "published_date": "2026/02/19",
-    "closing_date": "2026/04/22",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443886141479?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.663946"
-  },
-  {
-    "title": "Request for Information For Supply and Delivery of Radiographic Fluoroscopy Equi",
-    "organization": "Shared Health Inc.",
-    "published_date": "2026/02/20",
-    "closing_date": "2026/03/09",
-    "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Information-For-Supply-and-Delivery-of-Radiographic-Fluoroscopy-Equi/0000315089?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-09T09:41:24.688175"
-  },
-  {
-    "title": "Request for Requirement Refinement - Round 1 - Priority B - Electronic Health Record Platform (EHRP) Project",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2026/01/16",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784994500?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.206330"
-  },
-  {
-    "title": "Services de Distribution of respirators N95 and medical masks",
-    "organization": "Public Health Agency of Canada (PHAC)",
-    "published_date": "2026/03/05",
-    "closing_date": "2026/04/01",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998895?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.232012"
-  },
-  {
-    "title": "St. Boniface MRI Replacement",
-    "organization": "Shared Health: Capital Planning",
-    "published_date": "2026/01/14",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/solicitations/open-bids/St-Boniface-MRI-Replacement/0000311627?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.256669"
-  },
-  {
-    "title": "012NOI26CW K116-00 DH Energy Centre Upgrade - Geotech Engineering Consultant Services",
-    "organization": "Fraser Health Authority",
-    "published_date": "2026/03/02",
-    "closing_date": "2026/03/09",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443902458983?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.282234"
-  },
-  {
-    "title": "E135-02 Burnaby Hospital MRI Refurbishment",
-    "organization": "Fraser Health Authority",
-    "published_date": "2026/03/06",
-    "closing_date": "2026/03/26",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443910140509?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.307208"
-  },
-  {
-    "title": "Weyburn Special Care Home Emergency Power Addition",
-    "organization": "Saskatchewan Health Authority",
-    "published_date": "2026/02/23",
-    "closing_date": "2026/03/23",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443892035615?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.332134"
-  },
-  {
-    "title": "Chemistry and Immunoassay Testing at Rural Sites",
-    "organization": "Saskatchewan Health Authority",
-    "published_date": "2026/02/24",
-    "closing_date": "2026/03/23",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443893901621?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.357633"
-  },
-  {
-    "title": "FH-QS-2026-RFP - Request for Proposal for Quantity Surveying Services",
-    "organization": "Fraser Health Authority",
-    "published_date": "2026/02/23",
-    "closing_date": "2026/03/20",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443891385669?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.383187"
+    "scraped_at": "2026-03-09T13:50:53.648506"
   },
   {
     "title": "DEASE LAKE - Nurse Call Replacement RFP",
@@ -528,25 +42,34 @@
     "closing_date": "2026/04/02",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443908079528?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.408632"
+    "scraped_at": "2026-03-09T13:51:05.315656"
   },
   {
-    "title": "Provision of Tier 3 IM/IT Research and Advisory Services to enable the Canadian Institutes of Health Research (CIHR).",
-    "organization": "Canadian Institutes of Health Research (CIHR)",
-    "published_date": "2026/03/03",
-    "closing_date": "2026/03/25",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998704?origin=0",
+    "title": "K104-00 SMH Building D Southeast Upper and Lower Roof Replacement",
+    "organization": "Fraser Health Authority",
+    "published_date": "2026/03/09",
+    "closing_date": "2026/03/27",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/443913369191?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.434175"
+    "scraped_at": "2026-03-09T13:51:05.340061"
   },
   {
-    "title": "Compression Garments and Accessories",
-    "organization": "Saskatchewan Health Authority",
-    "published_date": "2025/12/18",
-    "closing_date": "2029/12/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443797666114?origin=0",
+    "title": "Services de Distribution of respirators N95 and medical masks",
+    "organization": "Public Health Agency of Canada (PHAC)",
+    "published_date": "2026/03/05",
+    "closing_date": "2026/04/01",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998895?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.459552"
+    "scraped_at": "2026-03-09T13:51:05.364433"
+  },
+  {
+    "title": "E135-02 Burnaby Hospital MRI Refurbishment",
+    "organization": "Fraser Health Authority",
+    "published_date": "2026/03/06",
+    "closing_date": "2026/03/26",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/443910140509?origin=0",
+    "page": 3,
+    "scraped_at": "2026-03-09T13:51:05.436823"
   },
   {
     "title": "2026 Open & Ongoing RFPQ",
@@ -555,160 +78,7 @@
     "closing_date": "2026/01/27",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443846879064?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.485203"
-  },
-  {
-    "title": "Digital Pathology Software and Scanner",
-    "organization": "Saskatchewan Health Authority",
-    "published_date": "2026/02/19",
-    "closing_date": "2026/03/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443886339500?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.510625"
-  },
-  {
-    "title": "Digital Recognition Platform",
-    "organization": "Waterloo Regional Health Network",
-    "published_date": "2025/12/12",
-    "closing_date": "2026/03/18",
-    "link": "https://www.merx.com/solicitations/open-bids/Digital-Recognition-Platform/0000309668?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.536302"
-  },
-  {
-    "title": "LEASE OF RETAIL PHARMACY SPACE WITHIN PENTICTON REGIONAL HOSPITAL",
-    "organization": "Interior Health Authority",
-    "published_date": "2026/01/23",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443841927658?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.561801"
-  },
-  {
-    "title": "ITB QVH Operating Room Lights- General Contractor Services",
-    "organization": "Interior Health Authority",
-    "published_date": "2026/02/04",
-    "closing_date": "2026/03/11",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443862179363?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.587521"
-  },
-  {
-    "title": "E260-00 VGH Willow Boilers Replacement",
-    "organization": "Fraser Health Authority",
-    "published_date": "2026/02/19",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443885819127?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.612626"
-  },
-  {
-    "title": "Third Party Provider for Survey Platform",
-    "organization": "Saskatchewan Health Authority",
-    "published_date": "2026/02/20",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443888044163?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.638340"
-  },
-  {
-    "title": "Blood Gas Analyzers",
-    "organization": "Saskatchewan Health Authority",
-    "published_date": "2026/02/24",
-    "closing_date": "2026/03/23",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443893901624?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.675738"
-  },
-  {
-    "title": "The Provision of Magtrace Platform",
-    "organization": "Saskatchewan Health Authority",
-    "published_date": "2026/02/26",
-    "closing_date": "2026/03/11",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443897905326?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.701229"
-  },
-  {
-    "title": "NRGH - Elevator Modernization - Contractor",
-    "organization": "Vancouver Island Health Authority",
-    "published_date": "2026/02/03",
-    "closing_date": "2026/03/17",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443860219746?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.726390"
-  },
-  {
-    "title": "Victoria General Hospital - Electrical Energy Centre - Construction Manager",
-    "organization": "Vancouver Island Health Authority",
-    "published_date": "2026/02/06",
-    "closing_date": "2026/03/26",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443866911764?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.751903"
-  },
-  {
-    "title": "RFP Strategic Planning Services",
-    "organization": "Association of Ontario Health Centres",
-    "published_date": "2026/02/12",
-    "closing_date": "2026/03/11",
-    "link": "https://www.merx.com/solicitations/open-bids/RFP-Strategic-Planning-Services/0000314341?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.777548"
-  },
-  {
-    "title": "NBRHC - CACC BUILDING – AHU#1 AND AHU#2 REPLACEMENT",
-    "organization": "North Bay Regional Health Centre",
-    "published_date": "2026/03/02",
-    "closing_date": "2026/03/26",
-    "link": "https://www.merx.com/solicitations/open-bids/NBRHC-CACC-BUILDING-AHU-1-AND-AHU-2-REPLACEMENT/0000315910?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.802968"
-  },
-  {
-    "title": "RFPQ-Data Network Infrastructure_Standing Opportunity",
-    "organization": "Vancouver Island Health Authority",
-    "published_date": "2023/12/04",
-    "closing_date": "2026/06/30",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/42965727153?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-09T09:41:36.828625"
-  },
-  {
-    "title": "Request for Pre-Qualification - Project Management Services - Standing Opportunity",
-    "organization": "Vancouver Island Health Authority",
-    "published_date": "2023/10/20",
-    "closing_date": "2026/10/30",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/42903382466?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.371270"
-  },
-  {
-    "title": "Victoria General Hospital MDRD & ESS - Industrial and Occupational Hygiene and Environmental Consulting",
-    "organization": "Vancouver Island Health Authority",
-    "published_date": "2026/02/19",
-    "closing_date": "2026/03/19",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443885819103?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.395801"
-  },
-  {
-    "title": "Inventory Management Software",
-    "organization": "First Nations Health Authority",
-    "published_date": "2026/02/20",
-    "closing_date": "2026/03/27",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443887453430?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.421080"
-  },
-  {
-    "title": "RHCF- PHARMACY REDEVELOPMENT",
-    "organization": "Riverside Health Care Facilities Inc",
-    "published_date": "2026/02/25",
-    "closing_date": "2026/03/17",
-    "link": "https://www.merx.com/solicitations/open-bids/RHCF-PHARMACY-REDEVELOPMENT/0000315483?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.445662"
+    "scraped_at": "2026-03-09T13:51:05.739359"
   },
   {
     "title": "ASHRAE Level III Energy Audit",
@@ -717,43 +87,7 @@
     "closing_date": "2026/03/31",
     "link": "https://www.merx.com/public/supplier/interception/open-solicitation/3868636257?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.470417"
-  },
-  {
-    "title": "1679 RFSQ Executive Coaching and Facilitation Services",
-    "organization": "Vancouver Island Health Authority",
-    "published_date": "2024/12/05",
-    "closing_date": "2030/12/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443341836735?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.495568"
-  },
-  {
-    "title": "Physiotherapy Services for Clients post Total Joint Replacement (Hips and Knees)",
-    "organization": "Vancouver Coastal Health Authority",
-    "published_date": "2026/02/11",
-    "closing_date": "2026/03/13",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443874335694?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.520929"
-  },
-  {
-    "title": "Victoria Regional Laundry - High Efficiency Boilers",
-    "organization": "Vancouver Island Health Authority",
-    "published_date": "2026/02/13",
-    "closing_date": "2026/03/10",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443877619548?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.545905"
-  },
-  {
-    "title": "PHSA 18825 RFPQ Fairness Advisory Services",
-    "organization": "Provincial Health Services Authority BC",
-    "published_date": "2026/02/18",
-    "closing_date": "2026/03/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443884749785?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.571217"
+    "scraped_at": "2026-03-09T13:51:17.602546"
   },
   {
     "title": "PHSA 18852 AIR COOLED CHILLER",
@@ -762,7 +96,7 @@
     "closing_date": "2026/02/26",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443897259749?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.595731"
+    "scraped_at": "2026-03-09T13:51:17.655100"
   },
   {
     "title": "PHSA 18833 Diesel Fuel",
@@ -771,7 +105,7 @@
     "closing_date": "2026/02/26",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443897227006?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.621373"
+    "scraped_at": "2026-03-09T13:51:17.679782"
   },
   {
     "title": "PHSA 18818 Thin Prep 5000",
@@ -780,133 +114,25 @@
     "closing_date": "2026/03/04",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443906399350?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.646543"
+    "scraped_at": "2026-03-09T13:51:17.705247"
   },
   {
-    "title": "Ascyrus Medical Dissection Stent (AMDS) Hybrid Prosthesis for Kelowna General Hospital, Vancouver General Hospital and Royal Jubilee Hospital",
+    "title": "ITQ PHSA 18702 TACROLIMUS EXTENDED RELEASE/PROLONGED RELEASE/INTRAVENOUS FORMULATIONS",
     "organization": "Provincial Health Services Authority BC",
-    "published_date": "2026/03/04",
-    "closing_date": "2026/03/13",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443906469328?origin=0",
+    "published_date": "2026/03/09",
+    "closing_date": "2026/03/17",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/443913427555?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.671033"
+    "scraped_at": "2026-03-09T13:51:17.755005"
   },
   {
-    "title": "Supply, Installation, and Commissioning of Tissue Processors",
-    "organization": "Thunder Bay Regional Health Science Centre",
-    "published_date": "2026/02/24",
-    "closing_date": "2026/03/25",
-    "link": "https://www.merx.com/solicitations/open-bids/Supply-Installation-and-Commissioning-of-Tissue-Processors/0000315355?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.695402"
-  },
-  {
-    "title": "PHSA 17550 - Laparoscopic Clip Appliers ITQ Document",
+    "title": "TENDER B893-04 BCC VCC Energy Upgrades Phase 2 Lighting",
     "organization": "Provincial Health Services Authority BC",
-    "published_date": "2026/02/18",
-    "closing_date": "2026/03/10",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443884749795?origin=0",
+    "published_date": "2026/03/09",
+    "closing_date": "2026/03/26",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/443913427592?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.720995"
-  },
-  {
-    "title": "Fully integrated Infectious Disease Molecular testing platforms, Service and Consumables",
-    "organization": "Provincial Health Services Authority BC",
-    "published_date": "2026/02/26",
-    "closing_date": "2026/03/24",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443897199136?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.745318"
-  },
-  {
-    "title": "Notice to Vendors for PHSA RFPQ 11810Audio Visual Equipment and Service Providers",
-    "organization": "Provincial Health Services Authority BC",
-    "published_date": "2025/10/09",
-    "closing_date": "2028/11/30",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443700907624?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.769701"
-  },
-  {
-    "title": "Infinium Global Diversity Array Products",
-    "organization": "Provincial Health Services Authority BC",
-    "published_date": "2026/03/04",
-    "closing_date": "2026/03/13",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443906244784?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.794367"
-  },
-  {
-    "title": "Sequencing analyzer- Illumina i100 Plus System",
-    "organization": "Provincial Health Services Authority BC",
-    "published_date": "2026/03/04",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443906469330?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.835752"
-  },
-  {
-    "title": "Prime Consultant Services for Digital X-Ray Suite Renovations",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/02/12",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/Prime-Consultant-Services-for-Digital-X-Ray-Suite-Renovations/0000314368?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.860808"
-  },
-  {
-    "title": "Standing Offer - Safety Training",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/02/12",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/Standing-Offer-Safety-Training/0000314312?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.885462"
-  },
-  {
-    "title": "Bulk Television Service - Central Zone Sites",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/02/18",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/Bulk-Television-Service-Central-Zone-Sites/0000314894?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.910485"
-  },
-  {
-    "title": "PROVISION AND OPERATION OF TWO STEPPED-DOWN MHA RESIDENTIAL SUPPORT HOMES - WZ",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/03/03",
-    "closing_date": "2026/04/02",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/PROVISION-AND-OPERATION-OF-TWO-STEPPED-DOWN-MHA-RESIDENTIAL-SUPPORT-HOMES-WZ/0000316069?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.935440"
-  },
-  {
-    "title": "Waste Collection & Disposal – Various Locations – Central Zone",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/02/19",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/Waste-Collection-Disposal-Various-Locations-Central-Zone/0000314958?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.960043"
-  },
-  {
-    "title": "Shingle Replacement – NLHS Facilities in Springdale, NL",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/02/19",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/Shingle-Replacement-NLHS-Facilities-in-Springdale-NL/0000314959?origin=0",
-    "page": 4,
-    "scraped_at": "2026-03-09T09:41:48.984732"
-  },
-  {
-    "title": "Home First Program Equipment",
-    "organization": "NL Provincial Health Shared Services Supply Chain",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/03/19",
-    "link": "https://www.merx.com/govnl/solicitations/open-bids/Home-First-Program-Equipment/0000315705?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.503784"
+    "scraped_at": "2026-03-09T13:51:17.942141"
   },
   {
     "title": "DJI Drones and accessories - NB",
@@ -915,52 +141,7 @@
     "closing_date": "2026/03/16",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443907304753?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.528833"
-  },
-  {
-    "title": "6D063-253321 - UPS Battery, Capacitor and Fan Replacement",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2026/02/16",
-    "closing_date": "2026/03/13",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784997268?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.554318"
-  },
-  {
-    "title": "SA-THIRD PARTY LOGISTICS",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2023/12/08",
-    "closing_date": "2028/12/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784942242?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.579384"
-  },
-  {
-    "title": "6D063-253911 – High Pressure Steam Generators",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2026/03/02",
-    "closing_date": "2026/03/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998563?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.605186"
-  },
-  {
-    "title": "RFI2526-006 Pharmacy Refrigerators and Freezers - NB",
-    "organization": "Government of New Brunswick",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/03/17",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443899993715?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.631846"
-  },
-  {
-    "title": "Low-Field Magnetic Resonance Imaging (MRI) Systems - NB",
-    "organization": "Government of New Brunswick",
-    "published_date": "2026/02/26",
-    "closing_date": "2026/03/20",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443899993704?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.657973"
+    "scraped_at": "2026-03-09T13:51:29.667422"
   },
   {
     "title": "Food and Beverage Vending Options - NB",
@@ -969,159 +150,6 @@
     "closing_date": "2026/03/19",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443907304765?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.683137"
-  },
-  {
-    "title": "Ultra High-Pressure Liquid Chromatograph (UHPLC) with Triple Qua",
-    "organization": "Government of New Brunswick",
-    "published_date": "2026/02/20",
-    "closing_date": "2026/03/17",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443892360363?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.707720"
-  },
-  {
-    "title": "RFP - Supply Pertussis-containing vaccines",
-    "organization": "Department of Public Works and Government Services (PSPC)",
-    "published_date": "2025/12/12",
-    "closing_date": "2026/02/06",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784991929?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.732314"
-  },
-  {
-    "title": "Project: tender_21422 - Privacy Assessments and Services",
-    "organization": "Ontario Shared Services",
-    "published_date": "2026/02/24",
-    "closing_date": "2026/03/26",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443893901606?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.757145"
-  },
-  {
-    "title": "Project: tender_21566 - Clinical Lead, Cardiogenetics",
-    "organization": "Ontario Shared Services",
-    "published_date": "2026/02/27",
-    "closing_date": "2026/03/26",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443899349064?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.781585"
-  },
-  {
-    "title": "Project: tender_21550 - User Experience Design (UXD) Software",
-    "organization": "Ontario Shared Services",
-    "published_date": "2026/02/23",
-    "closing_date": "2026/03/24",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443892035602?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.807201"
-  },
-  {
-    "title": "Drug Plan System Operation, Maintenance and Support",
-    "organization": "eHealth Saskatchewan",
-    "published_date": "2026/03/04",
-    "closing_date": "2026/03/18",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443907038880?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.832602"
-  },
-  {
-    "title": "RFQ-Media Services for Social Media",
-    "organization": "City of Toronto",
-    "published_date": "2026/02/04",
-    "closing_date": "2026/03/09",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443863124687?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.858472"
-  },
-  {
-    "title": "EXPRESSIONS OF INTEREST: PRIMARY CARE PHYSICIAN SERVICES FOR CORRECTIONAL SERVICE OF CANADA INSTITUTIONS (21120-20-PHYS/MÉD-00224)",
-    "organization": "Correctional Service of Canada",
-    "published_date": "2020/02/25",
-    "closing_date": "2032/04/06",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/847985705?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.883962"
-  },
-  {
-    "title": "EXPRESSIONS OF INTEREST: PSYCHIATRIC SERVICES FOR CORRECTIONAL SERVICE OF CANADA INSTITUTIONS (21120-20-PSYCH-0224)",
-    "organization": "Correctional Service of Canada",
-    "published_date": "2020/02/25",
-    "closing_date": "2032/04/06",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/847985706?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.909050"
-  },
-  {
-    "title": "Project: tender_17643 - Provincial Drug Reimbursement Program Clinical Expert Reviewers",
-    "organization": "Ontario Shared Services",
-    "published_date": "2022/12/01",
-    "closing_date": "2027/01/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22629257339?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.934321"
-  },
-  {
-    "title": "Project: tender_21553 - Sector Support, Clinical Lead – Paediatric Surgery",
-    "organization": "Ontario Shared Services",
-    "published_date": "2026/02/24",
-    "closing_date": "2026/03/25",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443893901605?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.960087"
-  },
-  {
-    "title": "Project: tender_21545 - Medical Director - Tissue",
-    "organization": "Ontario Shared Services",
-    "published_date": "2026/02/20",
-    "closing_date": "2026/03/12",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443887908992?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:00.985903"
-  },
-  {
-    "title": "Supporting the hosting of SHIIP in the Cloud",
-    "organization": "Queensway Carleton Hospital",
-    "published_date": "2026/02/17",
-    "closing_date": "2026/03/19",
-    "link": "https://www.merx.com/solicitations/open-bids/Supporting-the-hosting-of-SHIIP-in-the-Cloud/0000314794?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:01.026936"
-  },
-  {
-    "title": "Electronic Medical Records (EMR) System",
-    "organization": "Department of Foreign Affairs, Trade and Development (GAC)",
-    "published_date": "2026/02/25",
-    "closing_date": "2026/04/07",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22784998131?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:01.052040"
-  },
-  {
-    "title": "BTHC Retail Pharmacy Fit-Up",
-    "organization": "ft3 Architecture Landscape Interior Design",
-    "published_date": "2026/02/13",
-    "closing_date": "2026/03/16",
-    "link": "https://www.merx.com/mbgov/solicitations/open-bids/BTHC-Retail-Pharmacy-Fit-Up/0000314617?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:01.077960"
-  },
-  {
-    "title": "TA2089 - Skaha-Beblow - SZ",
-    "organization": "BC Timber Sales - Timber Auctions",
-    "published_date": "TA2089 - Skaha-Beblow - SZ",
-    "closing_date": "2026/02/10",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443872862861?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:01.103412"
-  },
-  {
-    "title": "TA2206 - TKO - Blueridge (KLFT)",
-    "organization": "BC Timber Sales - Timber Auctions",
-    "published_date": "2026/02/20",
-    "closing_date": "2026/03/17",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443887453416?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-09T09:42:01.128668"
+    "scraped_at": "2026-03-09T13:51:29.789802"
   }
 ]
