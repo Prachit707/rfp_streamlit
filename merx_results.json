@@ -6,7 +6,7 @@
     "closing_date": "2026/04/22",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443941271808?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-30T05:13:30.932427"
+    "scraped_at": "2026-03-30T05:15:41.885575"
   },
   {
     "title": "Fort Smith Health Center Chiller Replacement",
@@ -15,7 +15,7 @@
     "closing_date": "2026/04/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785000446?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-30T05:13:30.958639"
+    "scraped_at": "2026-03-30T05:15:41.912474"
   },
   {
     "title": "Health Centre Renovation Coral Harbour, NU",
@@ -24,7 +24,7 @@
     "closing_date": "2026/04/10",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443937112370?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-30T05:13:31.032245"
+    "scraped_at": "2026-03-30T05:15:41.995761"
   },
   {
     "title": "Unmanned Ground Vehicle for Canadian Forces Health Services",
@@ -33,7 +33,7 @@
     "closing_date": "2026/04/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785000287?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-30T05:13:31.177783"
+    "scraped_at": "2026-03-30T05:15:42.165795"
   },
   {
     "title": "RFI – DND Health Services Supply Chain Logistics Solution",
@@ -42,7 +42,7 @@
     "closing_date": "2026/04/16",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785000213?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-30T05:13:31.317701"
+    "scraped_at": "2026-03-30T05:15:42.322553"
   },
   {
     "title": "IFB 2613AM Millard Health Roof Replacement 2026",
@@ -51,7 +51,7 @@
     "closing_date": "2026/04/20",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443939422054?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-30T05:13:31.342635"
+    "scraped_at": "2026-03-30T05:15:42.349838"
   },
   {
     "title": "Leased Residential Housing for Newfoundland and Labrador Health Services (NLHS)",
@@ -60,7 +60,7 @@
     "closing_date": "2026/04/09",
     "link": "https://www.merx.com/govnl/solicitations/open-bids/Leased-Residential-Housing-for-Newfoundland-and-Labrador-Health-Services-NLHS/0000318565?origin=0",
     "page": 1,
-    "scraped_at": "2026-03-30T05:13:31.390934"
+    "scraped_at": "2026-03-30T05:15:42.406154"
   },
   {
     "title": "Sanirajak Health Centre Exterior Ramp & Interior Accessibility Upgrades Sanirajak, NU",
@@ -69,7 +69,7 @@
     "closing_date": "2026/04/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443937045947?origin=0",
     "page": 2,
-    "scraped_at": "2026-03-30T05:13:43.398228"
+    "scraped_at": "2026-03-30T05:15:54.248044"
   },
   {
     "title": "Electronic Health Record Platform (EHRP) Project Management Support Services (PMSS)",
@@ -78,34 +78,7 @@
     "closing_date": "2026/05/08",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785000558?origin=0",
     "page": 2,
-    "scraped_at": "2026-03-30T05:13:43.422834"
-  },
-  {
-    "title": "West Nile Virus Larviciding Program",
-    "organization": "Grand Erie Public Health",
-    "published_date": "2026/03/23",
-    "closing_date": "2026/04/17",
-    "link": "https://www.merx.com/solicitations/open-bids/West-Nile-Virus-Larviciding-Program/0000318204?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-30T05:13:43.896085"
-  },
-  {
-    "title": "K103-00 RMH North Acute Tower Roof Replacement",
-    "organization": "Fraser Health Authority",
-    "published_date": "2026/03/25",
-    "closing_date": "2026/04/15",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443939065217?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-30T05:13:43.921211"
-  },
-  {
-    "title": "K103-00 RMH North Acute Tower Roof Replacement",
-    "organization": "Fraser Health Authority",
-    "published_date": "2026/03/26",
-    "closing_date": "2026/04/15",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443940645831?origin=0",
-    "page": 2,
-    "scraped_at": "2026-03-30T05:13:43.945163"
+    "scraped_at": "2026-03-30T05:15:54.276898"
   },
   {
     "title": "E580-00 Surrey North Delta PCN – Long Term",
@@ -113,8 +86,8 @@
     "published_date": "2026/03/26",
     "closing_date": "2026/04/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443940645842?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-30T05:13:55.789629"
+    "page": 2,
+    "scraped_at": "2026-03-30T05:15:54.836789"
   },
   {
     "title": "FRASER LAKE - Chiller Replacement RFP",
@@ -122,8 +95,8 @@
     "published_date": "2026/03/26",
     "closing_date": "2026/04/23",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443940685006?origin=0",
-    "page": 3,
-    "scraped_at": "2026-03-30T05:13:55.813940"
+    "page": 2,
+    "scraped_at": "2026-03-30T05:15:54.863494"
   },
   {
     "title": "Pharmacy Services for Kamsack Hospital and District Nursing Home",
@@ -131,8 +104,17 @@
     "published_date": "2026/03/26",
     "closing_date": "2026/04/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443941271810?origin=0",
+    "page": 2,
+    "scraped_at": "2026-03-30T05:15:54.890968"
+  },
+  {
+    "title": "RFI-2026-03-20-1MH",
+    "organization": "Northern Health Authority",
+    "published_date": "RFI-2026-03-20-1MH",
+    "closing_date": "2026/03/23",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/443936159542?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:55.838763"
+    "scraped_at": "2026-03-30T05:16:06.655723"
   },
   {
     "title": "West Nile Virus Larviciding Program",
@@ -141,7 +123,7 @@
     "closing_date": "2026/04/17",
     "link": "https://www.merx.com/solicitations/open-bids/West-Nile-Virus-Larviciding-Program/0000318204?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:55.911125"
+    "scraped_at": "2026-03-30T05:16:06.740432"
   },
   {
     "title": "K103-00 RMH North Acute Tower Roof Replacement",
@@ -150,7 +132,7 @@
     "closing_date": "2026/04/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443939065217?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:55.935980"
+    "scraped_at": "2026-03-30T05:16:06.768935"
   },
   {
     "title": "K103-00 RMH North Acute Tower Roof Replacement",
@@ -159,7 +141,7 @@
     "closing_date": "2026/04/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443940645831?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:55.960197"
+    "scraped_at": "2026-03-30T05:16:06.798673"
   },
   {
     "title": "K102-00 MMH Northwest Acute Tower Roof Replacement",
@@ -168,7 +150,7 @@
     "closing_date": "2026/04/14",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443940645836?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:55.984135"
+    "scraped_at": "2026-03-30T05:16:06.827081"
   },
   {
     "title": "West Nile Virus Mosquito Identification and Viral Testing Program",
@@ -177,7 +159,7 @@
     "closing_date": "2026/04/17",
     "link": "https://www.merx.com/solicitations/open-bids/West-Nile-Virus-Mosquito-Identification-and-Viral-Testing-Program/0000318203?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:56.083930"
+    "scraped_at": "2026-03-30T05:16:06.939179"
   },
   {
     "title": "RFI-2026-03-20-CRE",
@@ -186,7 +168,7 @@
     "closing_date": "2026/03/23",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443936159505?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:56.108228"
+    "scraped_at": "2026-03-30T05:16:06.966422"
   },
   {
     "title": "RFI-2026-03-20-QUE Residential Tenancy Agreement",
@@ -195,7 +177,7 @@
     "closing_date": "2026/03/30",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443936159545?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:56.132266"
+    "scraped_at": "2026-03-30T05:16:06.993865"
   },
   {
     "title": "TERRACE - Withdrawal Management Facility Planning RFP",
@@ -204,7 +186,7 @@
     "closing_date": "2026/04/28",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443937386256?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:56.156601"
+    "scraped_at": "2026-03-30T05:16:07.022570"
   },
   {
     "title": "2026 Open & Ongoing RFPQ",
@@ -213,7 +195,7 @@
     "closing_date": "2026/01/27",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443846879064?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:56.216607"
+    "scraped_at": "2026-03-30T05:16:07.089107"
   },
   {
     "title": "K102-00 MMH Northwest Acute Tower Roof Replacement",
@@ -222,7 +204,16 @@
     "closing_date": "2026/04/14",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443939118573?origin=0",
     "page": 3,
-    "scraped_at": "2026-03-30T05:13:56.289377"
+    "scraped_at": "2026-03-30T05:16:07.171097"
+  },
+  {
+    "title": "Financial Audit Services",
+    "organization": "North Bay Regional Health Centre",
+    "published_date": "2026/03/23",
+    "closing_date": "2026/04/22",
+    "link": "https://www.merx.com/solicitations/open-bids/Financial-Audit-Services/0000318227?origin=0",
+    "page": 3,
+    "scraped_at": "2026-03-30T05:16:07.225359"
   },
   {
     "title": "Financial Audit Services",
@@ -231,7 +222,7 @@
     "closing_date": "2026/04/22",
     "link": "https://www.merx.com/solicitations/open-bids/Financial-Audit-Services/0000318227?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-30T05:14:08.305256"
+    "scraped_at": "2026-03-30T05:16:18.977155"
   },
   {
     "title": "002NOI26AS: F493-00 LGH Vault-B Renewal",
@@ -240,7 +231,7 @@
     "closing_date": "2026/03/30",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443936159548?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-30T05:14:08.330184"
+    "scraped_at": "2026-03-30T05:16:19.006815"
   },
   {
     "title": "727 Fisgard Office Reno - Construction Manager",
@@ -249,7 +240,7 @@
     "closing_date": "2026/04/24",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443942456162?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-30T05:14:08.354920"
+    "scraped_at": "2026-03-30T05:16:19.035330"
   },
   {
     "title": "SU27TAS7204 - Regen and Forest Health Surveys in the Morice and Bulkley Operating Areas of the Babine Business Area",
@@ -258,7 +249,7 @@
     "closing_date": "2026/04/22",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443942456158?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-30T05:14:08.501047"
+    "scraped_at": "2026-03-30T05:16:19.211055"
   },
   {
     "title": "ITQ PHSA 18728 UV Sanitizer for Laundry Carts",
@@ -267,7 +258,7 @@
     "closing_date": "2026/04/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443939065228?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-30T05:14:08.576073"
+    "scraped_at": "2026-03-30T05:16:19.298344"
   },
   {
     "title": "PHSA 16633 Ultrasound Systems",
@@ -276,7 +267,7 @@
     "closing_date": "2026/03/11",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443917264391?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-30T05:14:08.625379"
+    "scraped_at": "2026-03-30T05:16:19.357241"
   },
   {
     "title": "Leased Ambulance Fleet Centre and Base – St. John’s Metro Area, NL",
@@ -285,7 +276,7 @@
     "closing_date": "2026/04/23",
     "link": "https://www.merx.com/govnl/solicitations/open-bids/Leased-Ambulance-Fleet-Centre-and-Base-St-John-s-Metro-Area-NL/0000318300?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-30T05:14:08.767280"
+    "scraped_at": "2026-03-30T05:16:19.522530"
   },
   {
     "title": "Design and Manufacture Power Distribution",
@@ -294,7 +285,7 @@
     "closing_date": "2026/04/07",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785000249?origin=0",
     "page": 4,
-    "scraped_at": "2026-03-30T05:14:08.816082"
+    "scraped_at": "2026-03-30T05:16:19.580174"
   },
   {
     "title": "6D063-247552 System 800xA Update",
@@ -303,7 +294,7 @@
     "closing_date": "2026/04/22",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785000470?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-30T05:14:20.723343"
+    "scraped_at": "2026-03-30T05:16:31.386690"
   },
   {
     "title": "TA2516 - Walker",
@@ -312,7 +303,7 @@
     "closing_date": "2026/03/10",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443915446318?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.026880"
+    "scraped_at": "2026-03-30T05:16:31.723417"
   },
   {
     "title": "TA2201 - TFL30",
@@ -321,16 +312,7 @@
     "closing_date": "2026/03/20",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443932097919?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.076455"
-  },
-  {
-    "title": "TA1562 - Skeena West",
-    "organization": "BC Timber Sales - Timber Auctions",
-    "published_date": "TA1562 - Skeena West",
-    "closing_date": "2026/03/27",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443942574304?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.101364"
+    "scraped_at": "2026-03-30T05:16:31.779180"
   },
   {
     "title": "TA1496 - Reynolds",
@@ -339,7 +321,16 @@
     "closing_date": "2026/03/20",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443932181063?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.125774"
+    "scraped_at": "2026-03-30T05:16:31.806642"
+  },
+  {
+    "title": "TA1562 - Skeena West",
+    "organization": "BC Timber Sales - Timber Auctions",
+    "published_date": "TA1562 - Skeena West",
+    "closing_date": "2026/03/27",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/443942574304?origin=0",
+    "page": 5,
+    "scraped_at": "2026-03-30T05:16:31.833879"
   },
   {
     "title": "TSL TA2565-B, TPL - DC, Wolverine",
@@ -348,7 +339,7 @@
     "closing_date": "2026/04/22",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443940600778?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.215822"
+    "scraped_at": "2026-03-30T05:16:31.945223"
   },
   {
     "title": "A95019, TPL - DC, Redwillow",
@@ -357,7 +348,7 @@
     "closing_date": "2026/03/12",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443919365439?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.240366"
+    "scraped_at": "2026-03-30T05:16:31.973839"
   },
   {
     "title": "TA2901 - Akie/Del",
@@ -366,7 +357,7 @@
     "closing_date": "2026/03/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443927317812?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.264774"
+    "scraped_at": "2026-03-30T05:16:32.000876"
   },
   {
     "title": "TA2333 - Avola - Kamloops TSA(Clearwater)",
@@ -375,15 +366,6 @@
     "closing_date": "2026/04/09",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443936159512?origin=0",
     "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.288918"
-  },
-  {
-    "title": "TA2350 - Airline",
-    "organization": "BC Timber Sales - Timber Auctions",
-    "published_date": "TA2350 - Airline",
-    "closing_date": "2026/02/20",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/443887453438?origin=0",
-    "page": 5,
-    "scraped_at": "2026-03-30T05:14:21.314335"
+    "scraped_at": "2026-03-30T05:16:32.027460"
   }
 ]
