@@ -1,12 +1,21 @@
 [
   {
     "title": "Canadian Public Tenders",
+    "organization": "Electronic Health Records System",
+    "published_date": "2026/05/01",
+    "closing_date": "2026/08/24",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/22785003045?origin=0",
+    "page": 1,
+    "scraped_at": "2026-08-09T09:30:56.216753"
+  },
+  {
+    "title": "Canadian Public Tenders",
     "organization": "APN - HOUSING HEALTH SERVICES",
     "published_date": "2026/04/21",
     "closing_date": "2026/08/21",
     "link": "https://www.merx.com/dcc/solicitations/open-bids/APN-HOUSING-HEALTH-SERVICES/0000320268?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:20.926195"
+    "scraped_at": "2026-08-09T09:30:56.237872"
   },
   {
     "title": "Canadian Public Tenders",
@@ -15,16 +24,7 @@
     "closing_date": "2026/08/20",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444107037144?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:20.950527"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "Electronic Health Records System",
-    "published_date": "2026/05/01",
-    "closing_date": "2026/08/24",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/22785003045?origin=0",
-    "page": 1,
-    "scraped_at": "2026-08-08T09:29:20.990992"
+    "scraped_at": "2026-08-09T09:30:56.276393"
   },
   {
     "title": "Canadian Public Tenders",
@@ -33,7 +33,7 @@
     "closing_date": "2026/10/02",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/42883579207?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.014274"
+    "scraped_at": "2026-08-09T09:30:56.297213"
   },
   {
     "title": "Canadian Public Tenders",
@@ -42,7 +42,7 @@
     "closing_date": "2026/08/14",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444109896696?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.036837"
+    "scraped_at": "2026-08-09T09:30:56.318152"
   },
   {
     "title": "Canadian Public Tenders",
@@ -51,7 +51,7 @@
     "closing_date": "2026/08/19",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444098265597?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.059531"
+    "scraped_at": "2026-08-09T09:30:56.338489"
   },
   {
     "title": "Canadian Public Tenders",
@@ -60,7 +60,7 @@
     "closing_date": "2026/08/14",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444102194979?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.083933"
+    "scraped_at": "2026-08-09T09:30:56.360264"
   },
   {
     "title": "Canadian Public Tenders",
@@ -69,7 +69,7 @@
     "closing_date": "2026/08/10",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444090917749?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.107714"
+    "scraped_at": "2026-08-09T09:30:56.380225"
   },
   {
     "title": "Agencies, Crown & Private Corporations",
@@ -78,7 +78,7 @@
     "closing_date": "2026/08/24",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposal-3451-Safety-and-Health-eLesson-Training/0000329008?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.132762"
+    "scraped_at": "2026-08-09T09:30:56.401474"
   },
   {
     "title": "Canadian Public Tenders",
@@ -87,34 +87,7 @@
     "closing_date": "2026/08/27",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444116969576?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.156031"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "Communications initiatives aimed at producing compelling culturally based communications projects",
-    "published_date": "2026/07/24",
-    "closing_date": "2026/08/17",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444107202088?origin=0",
-    "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.178984"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "Supply of Pluggo Decappers and Kapsafe Recappers",
-    "published_date": "2026/07/24",
-    "closing_date": "2026/08/20",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444107288182?origin=0",
-    "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.201609"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "Primary Care Corridors Transformational Implementation Planning and Execution Support",
-    "published_date": "2026/07/28",
-    "closing_date": "2026/08/18",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444111338660?origin=0",
-    "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.224657"
+    "scraped_at": "2026-08-09T09:30:56.422129"
   },
   {
     "title": "Canadian Public Tenders",
@@ -123,7 +96,34 @@
     "closing_date": "2026/08/24",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444114926344?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.247332"
+    "scraped_at": "2026-08-09T09:30:56.442365"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "Communications initiatives aimed at producing compelling culturally based communications projects",
+    "published_date": "2026/07/24",
+    "closing_date": "2026/08/17",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444107202088?origin=0",
+    "page": 1,
+    "scraped_at": "2026-08-09T09:30:56.463800"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "Supply of Pluggo Decappers and Kapsafe Recappers",
+    "published_date": "2026/07/24",
+    "closing_date": "2026/08/20",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444107288182?origin=0",
+    "page": 1,
+    "scraped_at": "2026-08-09T09:30:56.484449"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "Primary Care Corridors Transformational Implementation Planning and Execution Support",
+    "published_date": "2026/07/28",
+    "closing_date": "2026/08/18",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444111338660?origin=0",
+    "page": 1,
+    "scraped_at": "2026-08-09T09:30:56.504226"
   },
   {
     "title": "Canadian Public Tenders",
@@ -132,7 +132,7 @@
     "closing_date": "2026/08/26",
     "link": "https://www.merx.com/solicitations/open-bids/KDH-Health-Centre-Rooftop-Unit-Replacement-Project/0000327976?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.285968"
+    "scraped_at": "2026-08-09T09:30:56.538021"
   },
   {
     "title": "Canadian Public Tenders",
@@ -141,7 +141,7 @@
     "closing_date": "2026/08/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444088240497?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.310378"
+    "scraped_at": "2026-08-09T09:30:56.558990"
   },
   {
     "title": "Canadian Public Tenders",
@@ -150,7 +150,7 @@
     "closing_date": "2026/12/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443960251906?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.333718"
+    "scraped_at": "2026-08-09T09:30:56.579192"
   },
   {
     "title": "Canadian Public Tenders",
@@ -159,7 +159,7 @@
     "closing_date": "2026/12/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444004720548?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.356941"
+    "scraped_at": "2026-08-09T09:30:56.599284"
   },
   {
     "title": "Canadian Public Tenders",
@@ -168,7 +168,7 @@
     "closing_date": "2026/09/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444119460714?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.380060"
+    "scraped_at": "2026-08-09T09:30:56.619416"
   },
   {
     "title": "Agencies, Crown & Private Corporations",
@@ -177,7 +177,7 @@
     "closing_date": "2026/08/21",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/DAUPHIN-RIVER-FIRST-NATION-NEW-HEALTH-CENTRE/0000328696?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.402974"
+    "scraped_at": "2026-08-09T09:30:56.640378"
   },
   {
     "title": "Canadian Public Tenders",
@@ -186,7 +186,7 @@
     "closing_date": "2100/12/14",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22784942607?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.425455"
+    "scraped_at": "2026-08-09T09:30:56.660189"
   },
   {
     "title": "Canadian Public Tenders",
@@ -195,7 +195,7 @@
     "closing_date": "2026/08/21",
     "link": "https://www.merx.com/solicitations/open-bids/Weeneebayko-Area-Health-Authority-RFP-for-Payment-Certifier-Services/0000329303?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.448117"
+    "scraped_at": "2026-08-09T09:30:56.681150"
   },
   {
     "title": "Canadian Public Tenders",
@@ -204,7 +204,7 @@
     "closing_date": "2026/08/27",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444086729733?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.470897"
+    "scraped_at": "2026-08-09T09:30:56.702057"
   },
   {
     "title": "Canadian Public Tenders",
@@ -213,7 +213,7 @@
     "closing_date": "2026/08/14",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444106012422?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.494123"
+    "scraped_at": "2026-08-09T09:30:56.723263"
   },
   {
     "title": "Canadian Public Tenders",
@@ -222,7 +222,7 @@
     "closing_date": "2026/08/14",
     "link": "https://www.merx.com/solicitations/open-bids/Health-Safety-Disability-Management-Software-as-a-Service/0000328021?origin=0",
     "page": 1,
-    "scraped_at": "2026-08-08T09:29:21.517547"
+    "scraped_at": "2026-08-09T09:30:56.744080"
   },
   {
     "title": "Canadian Public Tenders",
@@ -231,7 +231,7 @@
     "closing_date": "2026/08/18",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444100944542?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.070672"
+    "scraped_at": "2026-08-09T09:31:08.296367"
   },
   {
     "title": "Canadian Public Tenders",
@@ -240,7 +240,7 @@
     "closing_date": "2028/03/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443968635860?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.095296"
+    "scraped_at": "2026-08-09T09:31:08.320338"
   },
   {
     "title": "Canadian Public Tenders",
@@ -249,7 +249,7 @@
     "closing_date": "2026/08/20",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444113646737?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.119342"
+    "scraped_at": "2026-08-09T09:31:08.340935"
   },
   {
     "title": "Canadian Public Tenders",
@@ -258,7 +258,7 @@
     "closing_date": "2027/11/30",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443814384884?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.142540"
+    "scraped_at": "2026-08-09T09:31:08.361140"
   },
   {
     "title": "Canadian Public Tenders",
@@ -267,7 +267,7 @@
     "closing_date": "2026/08/25",
     "link": "https://www.merx.com/cityofottawa/solicitations/open-bids/SI-DSD-RID-1655-Maple-Grove-Road-Health-Hub/0000329225?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.166142"
+    "scraped_at": "2026-08-09T09:31:08.382195"
   },
   {
     "title": "Canadian Public Tenders",
@@ -276,7 +276,7 @@
     "closing_date": "2026/09/10",
     "link": "https://www.merx.com/govnl/solicitations/open-bids/Connaigre-Peninsula-Health-Care-Centre-Automatic-Transfer-Switch-Rep/0000329425?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.189067"
+    "scraped_at": "2026-08-09T09:31:08.402389"
   },
   {
     "title": "Canadian Public Tenders",
@@ -285,7 +285,7 @@
     "closing_date": "2026/08/18",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444103927455?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.212365"
+    "scraped_at": "2026-08-09T09:31:08.424360"
   },
   {
     "title": "Canadian Public Tenders",
@@ -294,7 +294,7 @@
     "closing_date": "2026/08/21",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444104994958?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.235917"
+    "scraped_at": "2026-08-09T09:31:08.443953"
   },
   {
     "title": "Canadian Public Tenders",
@@ -303,34 +303,7 @@
     "closing_date": "2026/08/31",
     "link": "https://www.merx.com/dcc/solicitations/open-bids/APN-HEALTH-SERVICES-CENTRE-AND-TRANSITION-CENTRE-CFB-HALIFAX-NOVA-SCOTIA/0000324920?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.259724"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "RFSQ - On-Boarding for Construction Delivery Team for Provision of Electrical and Data Connectivity",
-    "published_date": "2026/06/10",
-    "closing_date": "2027/03/02",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444056601364?origin=0",
-    "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.283862"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "RFP - Snow Removal and Ice Control Services, Buchanan Memorial Hospital",
-    "published_date": "2026/07/17",
-    "closing_date": "2026/08/13",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444099760932?origin=0",
-    "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.308412"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "RFP 26-2085 - Rural Service, Capacity and Outcomes Performance Evaluation (R-SCOPE)",
-    "published_date": "2026/08/03",
-    "closing_date": "2026/08/14",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444117006637?origin=0",
-    "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.332491"
+    "scraped_at": "2026-08-09T09:31:08.464297"
   },
   {
     "title": "Canadian Public Tenders",
@@ -339,7 +312,7 @@
     "closing_date": "2029/06/12",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443408084653?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.357332"
+    "scraped_at": "2026-08-09T09:31:08.485445"
   },
   {
     "title": "Canadian Public Tenders",
@@ -348,7 +321,7 @@
     "closing_date": "2026/09/09",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444072153577?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.381091"
+    "scraped_at": "2026-08-09T09:31:08.505571"
   },
   {
     "title": "Canadian Public Tenders",
@@ -357,7 +330,7 @@
     "closing_date": "2026/08/20",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785009851?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.417558"
+    "scraped_at": "2026-08-09T09:31:08.526606"
   },
   {
     "title": "Canadian Public Tenders",
@@ -366,7 +339,7 @@
     "closing_date": "2027/11/30",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/43073372025?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.440867"
+    "scraped_at": "2026-08-09T09:31:08.546839"
   },
   {
     "title": "Canadian Public Tenders",
@@ -375,7 +348,7 @@
     "closing_date": "2026/08/12",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444099760939?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.464880"
+    "scraped_at": "2026-08-09T09:31:08.568696"
   },
   {
     "title": "Canadian Public Tenders",
@@ -384,7 +357,34 @@
     "closing_date": "2026/09/04",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444101967356?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.489279"
+    "scraped_at": "2026-08-09T09:31:08.590117"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "RFSQ - On-Boarding for Construction Delivery Team for Provision of Electrical and Data Connectivity",
+    "published_date": "2026/06/10",
+    "closing_date": "2027/03/02",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444056601364?origin=0",
+    "page": 2,
+    "scraped_at": "2026-08-09T09:31:08.609717"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "RFP - Snow Removal and Ice Control Services, Buchanan Memorial Hospital",
+    "published_date": "2026/07/17",
+    "closing_date": "2026/08/13",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444099760932?origin=0",
+    "page": 2,
+    "scraped_at": "2026-08-09T09:31:08.640812"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "RFP 26-2085 - Rural Service, Capacity and Outcomes Performance Evaluation (R-SCOPE)",
+    "published_date": "2026/08/03",
+    "closing_date": "2026/08/14",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444117006637?origin=0",
+    "page": 2,
+    "scraped_at": "2026-08-09T09:31:08.660468"
   },
   {
     "title": "Canadian Public Tenders",
@@ -393,7 +393,7 @@
     "closing_date": "2026/08/10",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444065693523?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.515740"
+    "scraped_at": "2026-08-09T09:31:08.680343"
   },
   {
     "title": "Canadian Public Tenders",
@@ -402,7 +402,7 @@
     "closing_date": "2026/08/13",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444099760936?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.539699"
+    "scraped_at": "2026-08-09T09:31:08.702690"
   },
   {
     "title": "Canadian Public Tenders",
@@ -411,7 +411,7 @@
     "closing_date": "2026/08/26",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444103927462?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.563965"
+    "scraped_at": "2026-08-09T09:31:08.723010"
   },
   {
     "title": "Canadian Public Tenders",
@@ -420,7 +420,7 @@
     "closing_date": "2027/12/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22784983549?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.588125"
+    "scraped_at": "2026-08-09T09:31:08.743922"
   },
   {
     "title": "Canadian Public Tenders",
@@ -429,7 +429,7 @@
     "closing_date": "2027/01/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443216579577?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.612970"
+    "scraped_at": "2026-08-09T09:31:08.763457"
   },
   {
     "title": "Canadian Public Tenders",
@@ -438,7 +438,7 @@
     "closing_date": "2026/08/18",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444114983369?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.637446"
+    "scraped_at": "2026-08-09T09:31:08.783183"
   },
   {
     "title": "Canadian Public Tenders",
@@ -447,7 +447,7 @@
     "closing_date": "2026/10/01",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposals-For-Vascular-Closure-Devices-VCDs/0000329001?origin=0",
     "page": 2,
-    "scraped_at": "2026-08-08T09:29:33.661595"
+    "scraped_at": "2026-08-09T09:31:08.805125"
   },
   {
     "title": "Canadian Public Tenders",
@@ -456,7 +456,7 @@
     "closing_date": "2026/08/10",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposals-for-Billing-Service-Provider/0000326247?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.278782"
+    "scraped_at": "2026-08-09T09:31:20.398366"
   },
   {
     "title": "Canadian Public Tenders",
@@ -465,7 +465,7 @@
     "closing_date": "2026/08/17",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposals-for-Managed-Security-Service-Provider-MSSP/0000327071?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.302975"
+    "scraped_at": "2026-08-09T09:31:20.419085"
   },
   {
     "title": "Canadian Public Tenders",
@@ -474,7 +474,7 @@
     "closing_date": "2026/08/31",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/RFQ-VPN-Managed-Service-to-Support-the-Drug-Program-Information-Network-DPIN/0000329151?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.326615"
+    "scraped_at": "2026-08-09T09:31:20.440435"
   },
   {
     "title": "Canadian Public Tenders",
@@ -483,25 +483,7 @@
     "closing_date": "2026/10/02",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposal-for-Large-Volume-Infusion-Pumps/0000329431?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.350606"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "Request for Proposals For Vascular Closure Devices (VCDs)",
-    "published_date": "2026/08/04",
-    "closing_date": "2026/10/01",
-    "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposals-For-Vascular-Closure-Devices-VCDs/0000329001?origin=0",
-    "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.375115"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "CC-PE-0001-MB-26 RFQ for Level 4 Isolation Gowns, Disposable",
-    "published_date": "2026/08/04",
-    "closing_date": "2026/09/03",
-    "link": "https://www.merx.com/mbgov/solicitations/open-bids/CC-PE-0001-MB-26-RFQ-for-Level-4-Isolation-Gowns-Disposable/0000329139?origin=0",
-    "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.398778"
+    "scraped_at": "2026-08-09T09:31:20.461851"
   },
   {
     "title": "Canadian Public Tenders",
@@ -510,7 +492,25 @@
     "closing_date": "2026/08/28",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposals-For-Irrigation-Solutions-Saline-and-Sterile-Water/0000328686?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.422628"
+    "scraped_at": "2026-08-09T09:31:20.482793"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "Request for Proposals For Vascular Closure Devices (VCDs)",
+    "published_date": "2026/08/04",
+    "closing_date": "2026/10/01",
+    "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposals-For-Vascular-Closure-Devices-VCDs/0000329001?origin=0",
+    "page": 3,
+    "scraped_at": "2026-08-09T09:31:20.503066"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "CC-PE-0001-MB-26 RFQ for Level 4 Isolation Gowns, Disposable",
+    "published_date": "2026/08/04",
+    "closing_date": "2026/09/03",
+    "link": "https://www.merx.com/mbgov/solicitations/open-bids/CC-PE-0001-MB-26-RFQ-for-Level-4-Isolation-Gowns-Disposable/0000329139?origin=0",
+    "page": 3,
+    "scraped_at": "2026-08-09T09:31:20.523294"
   },
   {
     "title": "Canadian Public Tenders",
@@ -519,7 +519,7 @@
     "closing_date": "2026/08/24",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/RFI-for-Medical-Remuneration-Information-System/0000328886?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.445960"
+    "scraped_at": "2026-08-09T09:31:20.544214"
   },
   {
     "title": "Canadian Public Tenders",
@@ -528,7 +528,7 @@
     "closing_date": "2026/09/08",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/RFP-Hemodialysis-Portable-Reverse-Osmosis-Test-Strips-Filters-Carbon-Tank/0000329193?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.471038"
+    "scraped_at": "2026-08-09T09:31:20.565494"
   },
   {
     "title": "Agencies, Crown & Private Corporations",
@@ -537,7 +537,7 @@
     "closing_date": "2026/09/03",
     "link": "https://www.merx.com/solicitations/open-bids/Janitorial-Services/0000329273?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.496083"
+    "scraped_at": "2026-08-09T09:31:20.586357"
   },
   {
     "title": "Canadian Public Tenders",
@@ -546,7 +546,7 @@
     "closing_date": "2026/08/14",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposals-For-Supply-and-Delivery-of-X-ray-Equipment-and-Associated/0000327072?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.519870"
+    "scraped_at": "2026-08-09T09:31:20.606636"
   },
   {
     "title": "Canadian Public Tenders",
@@ -555,7 +555,7 @@
     "closing_date": "2026/08/18",
     "link": "https://www.merx.com/public/supplier/interception/open-solicitation/4030755121?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.544491"
+    "scraped_at": "2026-08-09T09:31:20.626171"
   },
   {
     "title": "Canadian Public Tenders",
@@ -564,7 +564,7 @@
     "closing_date": "2026/08/28",
     "link": "https://www.merx.com/mbgov/solicitations/open-bids/Request-for-Proposal-For-Provision-of-Radiographic-Fluoroscopy-Equipment-Service/0000329049?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.568703"
+    "scraped_at": "2026-08-09T09:31:20.646494"
   },
   {
     "title": "Agencies, Crown & Private Corporations",
@@ -573,7 +573,7 @@
     "closing_date": "2026/09/03",
     "link": "https://www.merx.com/solicitations/open-bids/Roof-Rehabilitation/0000329343?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.594347"
+    "scraped_at": "2026-08-09T09:31:20.667842"
   },
   {
     "title": "Canadian Public Tenders",
@@ -582,7 +582,7 @@
     "closing_date": "2026/08/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785008885?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.619526"
+    "scraped_at": "2026-08-09T09:31:20.702992"
   },
   {
     "title": "Canadian Public Tenders",
@@ -591,7 +591,7 @@
     "closing_date": "2026/08/20",
     "link": "https://www.merx.com/solicitations/open-bids/RFSQ-for-Engineering-Services-to-Establish-a-Vendor-of-Record/0000328319?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.643588"
+    "scraped_at": "2026-08-09T09:31:20.723388"
   },
   {
     "title": "Canadian Public Tenders",
@@ -600,7 +600,7 @@
     "closing_date": "2026/08/19",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444106345961?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.668026"
+    "scraped_at": "2026-08-09T09:31:20.742636"
   },
   {
     "title": "Canadian Public Tenders",
@@ -609,7 +609,7 @@
     "closing_date": "2026/08/13",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444107037137?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.693554"
+    "scraped_at": "2026-08-09T09:31:20.763138"
   },
   {
     "title": "Canadian Public Tenders",
@@ -618,7 +618,7 @@
     "closing_date": "2026/08/25",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444107579403?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.730184"
+    "scraped_at": "2026-08-09T09:31:20.783336"
   },
   {
     "title": "Canadian Public Tenders",
@@ -627,7 +627,7 @@
     "closing_date": "2026/08/27",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444121858678?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.754089"
+    "scraped_at": "2026-08-09T09:31:20.803889"
   },
   {
     "title": "Canadian Public Tenders",
@@ -636,7 +636,7 @@
     "closing_date": "2026/08/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444121935228?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.778182"
+    "scraped_at": "2026-08-09T09:31:20.823224"
   },
   {
     "title": "Canadian Public Tenders",
@@ -645,43 +645,43 @@
     "closing_date": "2026/09/09",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444121935235?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.800929"
+    "scraped_at": "2026-08-09T09:31:20.842370"
   },
   {
     "title": "Canadian Public Tenders",
-    "organization": "Haida Gwaii - HGH LAB Chemistry Analyzer Replacement RFP",
-    "published_date": "2026/07/10",
+    "organization": "Laboratory Coats",
+    "published_date": "2026/07/15",
+    "closing_date": "2026/08/11",
+    "link": "https://www.merx.com/solicitations/open-bids/Laboratory-Coats/0000327579?origin=0",
+    "page": 3,
+    "scraped_at": "2026-08-09T09:31:20.863203"
+  },
+  {
+    "title": "Canadian Public Tenders",
+    "organization": "RFP - KGH Sanitary Piping Replacement - Mechanical Engineering Services",
+    "published_date": "2026/07/17",
     "closing_date": "2026/08/14",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444090992268?origin=0",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444099886689?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.823894"
+    "scraped_at": "2026-08-09T09:31:20.882839"
   },
   {
     "title": "Canadian Public Tenders",
-    "organization": "K152-00 CGH B Wing ICU Roofs Replacement",
-    "published_date": "2026/07/21",
-    "closing_date": "2026/08/10",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444103354854?origin=0",
+    "organization": "RFPQ Mechanical Prime Contractor and/or Sub-Contractor Services -Intake 1",
+    "published_date": "2026/07/20",
+    "closing_date": "2026/10/15",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444102039303?origin=0",
     "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.847671"
+    "scraped_at": "2026-08-09T09:31:20.903726"
   },
   {
     "title": "Canadian Public Tenders",
-    "organization": "RFSQ for Architectural Services to Establish a Vendor of Record",
-    "published_date": "2026/07/23",
-    "closing_date": "2026/08/20",
-    "link": "https://www.merx.com/solicitations/open-bids/RFSQ-for-Architectural-Services-to-Establish-a-Vendor-of-Record/0000328318?origin=0",
-    "page": 3,
-    "scraped_at": "2026-08-08T09:29:45.871068"
-  },
-  {
-    "title": "Canadian Public Tenders",
-    "organization": "Contract Award for Next Generation Sequencing (NGS) Equipment",
-    "published_date": "2026/08/06",
-    "closing_date": "2026/08/31",
-    "link": "https://www.merx.com/public/supplier/interception/view-notice/444120812824?origin=0",
+    "organization": "RFP - CBM (RML) EK Road To Recovery Planning - Planning Services",
+    "published_date": "2026/08/07",
+    "closing_date": "2026/09/09",
+    "link": "https://www.merx.com/public/supplier/interception/view-notice/444121935235?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.406570"
+    "scraped_at": "2026-08-09T09:31:32.410880"
   },
   {
     "title": "Canadian Public Tenders",
@@ -690,7 +690,7 @@
     "closing_date": "2026/08/11",
     "link": "https://www.merx.com/solicitations/open-bids/Laboratory-Coats/0000327579?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.430750"
+    "scraped_at": "2026-08-09T09:31:32.431277"
   },
   {
     "title": "Canadian Public Tenders",
@@ -699,7 +699,7 @@
     "closing_date": "2026/08/14",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444099886689?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.453885"
+    "scraped_at": "2026-08-09T09:31:32.452606"
   },
   {
     "title": "Canadian Public Tenders",
@@ -708,7 +708,7 @@
     "closing_date": "2026/10/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444102039303?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.477679"
+    "scraped_at": "2026-08-09T09:31:32.472353"
   },
   {
     "title": "Canadian Public Tenders",
@@ -717,7 +717,7 @@
     "closing_date": "2026/08/20",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444111454421?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.501792"
+    "scraped_at": "2026-08-09T09:31:32.492869"
   },
   {
     "title": "Canadian Public Tenders",
@@ -726,7 +726,7 @@
     "closing_date": "2026/08/26",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444120572351?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.525904"
+    "scraped_at": "2026-08-09T09:31:32.514112"
   },
   {
     "title": "Canadian Public Tenders",
@@ -735,7 +735,7 @@
     "closing_date": "2026/09/01",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444122182695?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.550926"
+    "scraped_at": "2026-08-09T09:31:32.535515"
   },
   {
     "title": "Canadian Public Tenders",
@@ -744,7 +744,7 @@
     "closing_date": "2026/08/19",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/22785010028?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.574673"
+    "scraped_at": "2026-08-09T09:31:32.557190"
   },
   {
     "title": "Canadian Public Tenders",
@@ -753,7 +753,7 @@
     "closing_date": "2026/08/27",
     "link": "https://www.merx.com/solicitations/open-bids/Temporary-Perfusion-Staffing-Services/0000326945?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.598592"
+    "scraped_at": "2026-08-09T09:31:32.576217"
   },
   {
     "title": "Canadian Public Tenders",
@@ -762,7 +762,7 @@
     "closing_date": "2026/08/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444110644785?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.623044"
+    "scraped_at": "2026-08-09T09:31:32.597917"
   },
   {
     "title": "Canadian Public Tenders",
@@ -771,7 +771,7 @@
     "closing_date": "2026/08/27",
     "link": "https://www.merx.com/solicitations/open-bids/Critical-Care-Renovation-ICMS-Expansion/0000328710?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.647294"
+    "scraped_at": "2026-08-09T09:31:32.619835"
   },
   {
     "title": "Canadian Public Tenders",
@@ -780,7 +780,7 @@
     "closing_date": "2026/08/20",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444114855127?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.670828"
+    "scraped_at": "2026-08-09T09:31:32.640098"
   },
   {
     "title": "Canadian Public Tenders",
@@ -789,7 +789,7 @@
     "closing_date": "2026/08/25",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444120783191?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.696420"
+    "scraped_at": "2026-08-09T09:31:32.661109"
   },
   {
     "title": "Canadian Public Tenders",
@@ -798,7 +798,7 @@
     "closing_date": "2026/08/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444121935212?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.721206"
+    "scraped_at": "2026-08-09T09:31:32.680936"
   },
   {
     "title": "Canadian Public Tenders",
@@ -807,7 +807,7 @@
     "closing_date": "2029/12/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443797666114?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.746750"
+    "scraped_at": "2026-08-09T09:31:32.702686"
   },
   {
     "title": "Canadian Public Tenders",
@@ -816,7 +816,7 @@
     "closing_date": "2026/01/27",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443846879064?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.770802"
+    "scraped_at": "2026-08-09T09:31:32.724489"
   },
   {
     "title": "Canadian Public Tenders",
@@ -825,7 +825,7 @@
     "closing_date": "2027/05/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444049777942?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.795293"
+    "scraped_at": "2026-08-09T09:31:32.747464"
   },
   {
     "title": "Canadian Public Tenders",
@@ -834,7 +834,7 @@
     "closing_date": "2026/10/15",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444101999800?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.819220"
+    "scraped_at": "2026-08-09T09:31:32.769596"
   },
   {
     "title": "Canadian Public Tenders",
@@ -843,7 +843,7 @@
     "closing_date": "2026/08/13",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444102194991?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.842990"
+    "scraped_at": "2026-08-09T09:31:32.789583"
   },
   {
     "title": "Canadian Public Tenders",
@@ -852,7 +852,7 @@
     "closing_date": "2026/08/11",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444104363191?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.867316"
+    "scraped_at": "2026-08-09T09:31:32.809520"
   },
   {
     "title": "Canadian Public Tenders",
@@ -861,7 +861,7 @@
     "closing_date": "2026/08/26",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444107202070?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.890872"
+    "scraped_at": "2026-08-09T09:31:32.829501"
   },
   {
     "title": "Canadian Public Tenders",
@@ -870,7 +870,7 @@
     "closing_date": "2026/08/18",
     "link": "https://www.merx.com/solicitations/open-bids/St-Paul-s-Personal-Care-Home-The-Pas-Roof-Replacement/0000328614?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.914879"
+    "scraped_at": "2026-08-09T09:31:32.849360"
   },
   {
     "title": "Canadian Public Tenders",
@@ -879,7 +879,7 @@
     "closing_date": "2026/08/18",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444112706235?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.954248"
+    "scraped_at": "2026-08-09T09:31:32.872608"
   },
   {
     "title": "Canadian Public Tenders",
@@ -888,7 +888,7 @@
     "closing_date": "2026/08/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444121858700?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:57.978491"
+    "scraped_at": "2026-08-09T09:31:32.903914"
   },
   {
     "title": "Canadian Public Tenders",
@@ -897,7 +897,7 @@
     "closing_date": "2027/05/28",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444033909424?origin=0",
     "page": 4,
-    "scraped_at": "2026-08-08T09:29:58.002520"
+    "scraped_at": "2026-08-09T09:31:32.923844"
   },
   {
     "title": "Canadian Public Tenders",
@@ -906,7 +906,7 @@
     "closing_date": "2026/08/18",
     "link": "https://www.merx.com/solicitations/open-bids/Utility-Line-Audit-and-GIS-Mapping/0000328659?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.586915"
+    "scraped_at": "2026-08-09T09:31:44.538632"
   },
   {
     "title": "Canadian Public Tenders",
@@ -915,7 +915,7 @@
     "closing_date": "2027/05/28",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444033909424?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.630149"
+    "scraped_at": "2026-08-09T09:31:44.559530"
   },
   {
     "title": "Canadian Public Tenders",
@@ -924,7 +924,7 @@
     "closing_date": "2026/08/24",
     "link": "https://www.merx.com/solicitations/open-bids/Back-Office-Modernization/0000328250?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.655170"
+    "scraped_at": "2026-08-09T09:31:44.579544"
   },
   {
     "title": "Canadian Public Tenders",
@@ -933,7 +933,7 @@
     "closing_date": "2026/08/19",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444106345968?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.679062"
+    "scraped_at": "2026-08-09T09:31:44.600250"
   },
   {
     "title": "Canadian Public Tenders",
@@ -942,7 +942,7 @@
     "closing_date": "2026/08/19",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444107202068?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.703008"
+    "scraped_at": "2026-08-09T09:31:44.623913"
   },
   {
     "title": "Canadian Public Tenders",
@@ -951,7 +951,7 @@
     "closing_date": "2026/09/02",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444119287231?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.728018"
+    "scraped_at": "2026-08-09T09:31:44.644519"
   },
   {
     "title": "Canadian Public Tenders",
@@ -960,7 +960,7 @@
     "closing_date": "2026/09/17",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444120527038?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.751654"
+    "scraped_at": "2026-08-09T09:31:44.664831"
   },
   {
     "title": "Canadian Public Tenders",
@@ -969,7 +969,7 @@
     "closing_date": "2026/08/12",
     "link": "https://www.merx.com/solicitations/open-bids/Bayview-Renovation-Project-Secure-Clinical-Environment/0000328145?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.775635"
+    "scraped_at": "2026-08-09T09:31:44.685686"
   },
   {
     "title": "Canadian Public Tenders",
@@ -978,7 +978,7 @@
     "closing_date": "2026/08/26",
     "link": "https://www.merx.com/solicitations/open-bids/Water-Main-Work-Backflow-Prevention/0000328770?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.800184"
+    "scraped_at": "2026-08-09T09:31:44.708228"
   },
   {
     "title": "Canadian Public Tenders",
@@ -987,7 +987,7 @@
     "closing_date": "2026/08/17",
     "link": "https://www.merx.com/solicitations/open-bids/ANSON-GENERAL-HOSPITAL-SECURE-ACCESS-ALARM-UPGRADES/0000328823?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.825426"
+    "scraped_at": "2026-08-09T09:31:44.729893"
   },
   {
     "title": "Canadian Public Tenders",
@@ -996,7 +996,7 @@
     "closing_date": "2026/08/28",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444113695115?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.849783"
+    "scraped_at": "2026-08-09T09:31:44.749411"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1005,7 +1005,7 @@
     "closing_date": "2026/08/26",
     "link": "https://www.merx.com/solicitations/open-bids/Centre-Roundabout-and-Garden-Revitalization-Design-and-Build/0000329031?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.874908"
+    "scraped_at": "2026-08-09T09:31:44.769254"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1014,7 +1014,7 @@
     "closing_date": "2030/12/31",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/443341836735?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.899290"
+    "scraped_at": "2026-08-09T09:31:44.790197"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1023,7 +1023,7 @@
     "closing_date": "2026/08/19",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444107202059?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.923471"
+    "scraped_at": "2026-08-09T09:31:44.810182"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1032,7 +1032,7 @@
     "closing_date": "2026/08/17",
     "link": "https://www.merx.com/solicitations/open-bids/BINGHAM-MEMORIAL-HOSPITAL-SECURE-ACCESS-ALARM-UPGRADES/0000328809?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.948954"
+    "scraped_at": "2026-08-09T09:31:44.833236"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1041,7 +1041,7 @@
     "closing_date": "2026/10/30",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/42903382466?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.973341"
+    "scraped_at": "2026-08-09T09:31:44.853863"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1050,7 +1050,7 @@
     "closing_date": "2026/08/13",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444093877679?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:09.998374"
+    "scraped_at": "2026-08-09T09:31:44.874870"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1059,7 +1059,7 @@
     "closing_date": "2026/08/13",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444042455208?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:10.024241"
+    "scraped_at": "2026-08-09T09:31:44.895910"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1068,7 +1068,7 @@
     "closing_date": "2026/08/10",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444102346655?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:10.052600"
+    "scraped_at": "2026-08-09T09:31:44.916420"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1077,7 +1077,7 @@
     "closing_date": "2026/09/08",
     "link": "https://www.merx.com/solicitations/open-bids/SLFNHA-Hostel-Management-of-Food-Services/0000328799?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:10.078429"
+    "scraped_at": "2026-08-09T09:31:44.938941"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1086,7 +1086,7 @@
     "closing_date": "2026/08/18",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444104424209?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:10.103566"
+    "scraped_at": "2026-08-09T09:31:44.983271"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1095,7 +1095,7 @@
     "closing_date": "2026/08/13",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444107202061?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:10.128598"
+    "scraped_at": "2026-08-09T09:31:45.004001"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1104,7 +1104,7 @@
     "closing_date": "2026/08/24",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444098877793?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:10.152845"
+    "scraped_at": "2026-08-09T09:31:45.025609"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1113,7 +1113,7 @@
     "closing_date": "2026/08/14",
     "link": "https://www.merx.com/public/supplier/interception/view-notice/444119287216?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:10.176476"
+    "scraped_at": "2026-08-09T09:31:45.046901"
   },
   {
     "title": "Canadian Public Tenders",
@@ -1122,6 +1122,6 @@
     "closing_date": "2026/09/02",
     "link": "https://www.merx.com/solicitations/open-bids/Professional-Cleaning-and-Housekeeping-Services/0000329358?origin=0",
     "page": 5,
-    "scraped_at": "2026-08-08T09:30:10.200538"
+    "scraped_at": "2026-08-09T09:31:45.068597"
   }
 ]
